@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appendix Table — All Bills Referencing Multilingual Learners in Literacy Legislation</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#fff;padding:1.5rem;font-size:11px}
+h2{font-size:13px;font-weight:600;color:#111;margin-bottom:0.25rem}
+p.sub{font-size:11px;color:#888;margin-bottom:1rem}
+.controls{display:flex;gap:8px;margin-bottom:0.75rem;flex-wrap:wrap;align-items:center}
+.controls input{padding:5px 10px;border:0.5px solid #ccc;border-radius:6px;font-size:11px;width:180px;outline:none}
+.controls input:focus{border-color:#2271B3}
+.controls select{padding:5px 8px;border:0.5px solid #ccc;border-radius:6px;font-size:11px;outline:none;background:#fff}
+.count{font-size:11px;color:#888;margin-left:auto}
+.class-btns{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:0.75rem}
+.class-btn{padding:4px 12px;border-radius:20px;font-size:10px;font-weight:500;cursor:pointer;border:0.5px solid #ccc;background:#fff;color:#555;transition:all 0.1s}
+.class-btn:hover{border-color:#999}
+.class-btn.active-all{background:#111;color:#fff;border-color:#111}
+.class-btn.active-bc{background:#0C447C;color:#fff;border-color:#0C447C}
+.class-btn.active-nc{background:#185FA5;color:#fff;border-color:#185FA5}
+.class-btn.active-np{background:#BA7517;color:#fff;border-color:#BA7517}
+.class-btn.active-pp{background:#888;color:#fff;border-color:#888}
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:10px}
+thead tr{border-bottom:1.5px solid #ccc;background:#f3f2ef}
+thead th{padding:5px 5px;text-align:center;font-weight:500;font-size:9px;color:#555;white-space:nowrap;vertical-align:bottom}
+thead th.left{text-align:left}
+thead th.group-core{background:#e6f1fb;color:#0C447C;border-bottom:1.5px solid #85B7EB}
+thead th.group-peri{background:#f1efe8;color:#555;border-bottom:1.5px solid #B4B2A9}
+thead th.group-sor{background:#f5f5f3;color:#333}
+tbody tr.state-first td{border-top:1px solid #ccc}
+tbody tr{border-bottom:0.5px solid #eee}
+tbody tr:hover{background:rgba(0,0,0,0.03)}
+td{padding:4px 5px;text-align:center;vertical-align:middle}
+td.state-cell{text-align:left;vertical-align:top;padding-top:6px;white-space:nowrap;min-width:90px}
+.state-name{font-weight:600;color:#111;font-size:10px;display:block;line-height:1.2}
+.state-count{font-size:8.5px;font-weight:400;color:#888;display:block;margin-top:1px}
+.state-class{font-size:8px;font-weight:500;padding:1px 5px;border-radius:4px;display:inline-block;margin-top:2px}
+.sc-bc{background:#E6F1FB;color:#0C447C}
+.sc-nc{background:#EFF6FD;color:#185FA5}
+.sc-np{background:#FAEEDA;color:#854F0B}
+.sc-pp{background:#F1EFE8;color:#555}
+td.bill{text-align:left;font-family:monospace;font-size:9px;color:#2271B3;white-space:nowrap;max-width:90px}
+td.year{color:#888;font-size:9px;white-space:nowrap;min-width:32px}
+td.flag{min-width:24px}
+.star{color:#F5A623;font-size:10px}
+.ck{color:#2271B3;font-size:11px}
+.no{color:#ddd;font-size:10px}
+.dot{width:10px;height:10px;border-radius:2px;display:inline-block;vertical-align:middle}
+.dot-core{background:#2271B3}
+.dot-peri{background:#B4B2A9}
+.dot-best{background:#F5A623}
+.dot-runner{background:#f0efed;border:1.5px solid #F5A623}
+.dot-none{background:#f0efed}
+.legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:0.75rem;font-size:10px;color:#555;align-items:center}
+.leg{display:flex;align-items:center;gap:4px}
+p.note{font-size:10px;color:#999;margin-top:0.75rem;font-style:italic;line-height:1.5}
+</style>
+</head>
+<body>
+<h2>Appendix Table. All Bills Referencing Multilingual Learners in Literacy Legislation, 2019–2025</h2>
+<p class="sub">148 bills across 37 states and the District of Columbia. Sorted by state and year.</p>
+
+<div class="class-btns">
+  <button class="class-btn active-all" onclick="setClass('all', this)">All states (148)</button>
+  <button class="class-btn" onclick="setClass('broad_core', this)">Broad / Core (15 states)</button>
+  <button class="class-btn" onclick="setClass('narrow_core', this)">Narrow / Core (8 states)</button>
+  <button class="class-btn" onclick="setClass('narrow_peri', this)">Narrow / Periphery (14 states)</button>
+  </div>
+
+<div class="legend">
+  <span class="leg"><span class="dot dot-core"></span> Core domain</span>
+  <span class="leg"><span class="dot dot-peri"></span> Periphery domain</span>
+  <span class="leg"><span class="dot dot-best"></span> Best-in-class</span>
+  <span class="leg"><span class="dot dot-runner"></span> Runner-up</span>
+</div>
+
+<div class="controls">
+  <input type="text" id="search" placeholder="Search state or bill…" oninput="filterTable()">
+  <select id="stateFilter" onchange="filterTable()">
+    <option value="">All states</option>
+  </select>
+  <select id="flagFilter" onchange="filterTable()">
+    <option value="">All bills</option>
+    <option value="flagship">Flagship only</option>
+    <option value="sor">SOR-grounded (5P + OL)</option>
+    <option value="el_core">Has core EL provision</option>
+    <option value="best">Best-in-class</option>
+    <option value="runner">Runner-up</option>
+  </select>
+  <span class="count" id="count">154 bills</span>
+</div>
+
+<div class="tbl-wrap">
+<table id="mainTable">
+  <thead>
+    <tr>
+      <th class="left" rowspan="2" style="min-width:100px">State</th>
+      <th class="left" rowspan="2" style="min-width:85px">Bill</th>
+      <th rowspan="2" style="min-width:32px">Year</th>
+      <th rowspan="2" style="min-width:24px">★</th>
+      <th colspan="2" class="group-sor">SOR</th>
+      <th colspan="5" class="group-core">Instructional core</th>
+      <th colspan="4" class="group-peri">Periphery</th>
+    </tr>
+    <tr>
+      <th class="group-sor">5P</th>
+      <th class="group-sor">OL</th>
+      <th class="group-core">Instr</th>
+      <th class="group-core">PD</th>
+      <th class="group-core">Prep</th>
+      <th class="group-core">Assess</th>
+      <th class="group-core">Res</th>
+      <th class="group-peri">Prot</th>
+      <th class="group-peri">Fund</th>
+      <th class="group-peri">Lead</th>
+      <th class="group-peri">Acct</th>
+    </tr>
+  </thead>
+  <tbody id="tbody"></tbody>
+</table>
+</div>
+<p class="note">★ = flagship bill · 5P = five pillars · OL = oral language · Broad/Core = 4+ EL domains including instructional core · Narrow/Core = 1–3 EL domains including core · Narrow/Periphery = 1–3 EL domains, periphery only · Instr = Instruction; PD = Teacher PD; Prep = Teacher Preparation; Assess = Assessment; Res = Resources &amp; Staffing; Prot = Student Protections; Fund = Funding; Lead = Leadership; Acct = Accountability · Source: ASI Literacy Policy Database and ASI EL Literacy Policy Database (2019–2025).</p>
+
+<script>
+const DATA = [{"state": "Alabama", "bill": "HB 388", "year": 2019, "flagship": true, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Alabama", "bill": "SB 199", "year": 2019, "flagship": false, "fp": false, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 0, "AC": 1, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Alabama", "bill": "SB 189 ", "year": 2021, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 1, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Alabama", "bill": "HB 135 ", "year": 2022, "flagship": false, "fp": false, "ol": false, "L": 1, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 1, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Alabama", "bill": "HB 220 ", "year": 2022, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Alabama", "bill": "SB 200 ", "year": 2022, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Alabama", "bill": "HB 145", "year": 2024, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 1, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Alaska", "bill": "HB 114", "year": 2021, "flagship": true, "fp": true, "ol": true, "L": 1, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Arizona", "bill": "SB 1071", "year": 2019, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Arizona", "bill": "HB 2026 ", "year": 2021, "flagship": true, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 1, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Arizona", "bill": "SB 1404", "year": 2021, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 1, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Arizona", "bill": "SB 1572", "year": 2021, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 1, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Arizona", "bill": "SB 1636 ", "year": 2021, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 1, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Arizona", "bill": "SB 1720", "year": 2023, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 1, "SP": 0, "F": 1, "R": 1, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Arizona", "bill": "HB 2906", "year": 2024, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Arizona", "bill": "SB 1502", "year": 2025, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "California", "bill": "SB 98", "year": 2019, "flagship": false, "fp": false, "ol": true, "L": 0, "I": 0, "PD": 1, "TP": 0, "A": 1, "SP": 1, "F": 0, "R": 1, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "California", "bill": "SB 820", "year": 2020, "flagship": false, "fp": false, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 1, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "California", "bill": "AB 130", "year": 2021, "flagship": false, "fp": false, "ol": true, "L": 1, "I": 1, "PD": 1, "TP": 0, "A": 0, "SP": 1, "F": 1, "R": 1, "AC": 1, "best": [], "runner": ["AC"], "classification": "broad_core"}, {"state": "California", "bill": "AB 181", "year": 2021, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 1, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 1, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "California", "bill": "AB 320", "year": 2021, "flagship": false, "fp": false, "ol": true, "L": 0, "I": 1, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 1, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "California", "bill": "SB 170", "year": 2021, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 1, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "California", "bill": "SB 488", "year": 2021, "flagship": true, "fp": false, "ol": true, "L": 0, "I": 1, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 1, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "California", "bill": "AB 107", "year": 2023, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 1, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "California", "bill": "SB 114", "year": 2023, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 1, "PD": 1, "TP": 0, "A": 1, "SP": 0, "F": 1, "R": 1, "AC": 1, "best": ["A"], "runner": [], "classification": "broad_core"}, {"state": "California", "bill": "SB 153", "year": 2023, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 1, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "California", "bill": "AB 2268", "year": 2024, "flagship": false, "fp": false, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 1, "SP": 0, "F": 0, "R": 0, "AC": 1, "best": [], "runner": [], "classification": "broad_core"}, {"state": "California", "bill": "AB 1034", "year": 2025, "flagship": false, "fp": false, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 1, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "California", "bill": "AB 121", "year": 2025, "flagship": false, "fp": true, "ol": true, "L": 1, "I": 1, "PD": 0, "TP": 0, "A": 1, "SP": 0, "F": 0, "R": 1, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "California", "bill": "AB 1454", "year": 2025, "flagship": true, "fp": true, "ol": true, "L": 0, "I": 1, "PD": 0, "TP": 1, "A": 0, "SP": 0, "F": 0, "R": 1, "AC": 0, "best": [], "runner": ["TP", "R"], "classification": "broad_core"}, {"state": "California", "bill": "SB 147", "year": 2025, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 1, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Colorado", "bill": "SB 19-199", "year": 2019, "flagship": false, "fp": true, "ol": true, "L": 1, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_core"}, {"state": "Colorado", "bill": "SB 25-200", "year": 2025, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_core"}, {"state": "Connecticut", "bill": "HB 6517 ", "year": 2021, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 1, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Connecticut", "bill": "SB 1202", "year": 2021, "flagship": true, "fp": true, "ol": true, "L": 1, "I": 1, "PD": 0, "TP": 0, "A": 1, "SP": 0, "F": 0, "R": 0, "AC": 1, "best": ["L"], "runner": ["A"], "classification": "broad_core"}, {"state": "Connecticut", "bill": "SB 945", "year": 2021, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 1, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Connecticut", "bill": "HB 6762", "year": 2023, "flagship": false, "fp": false, "ol": false, "L": 1, "I": 0, "PD": 1, "TP": 0, "A": 1, "SP": 0, "F": 1, "R": 0, "AC": 0, "best": ["F"], "runner": [], "classification": "broad_core"}, {"state": "Connecticut", "bill": "HB 6941", "year": 2023, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Connecticut", "bill": "SB 1", "year": 2023, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 1, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Delaware", "bill": "HB 250", "year": 2021, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 1, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "District of Columbia", "bill": "ACT 23-548", "year": 2019, "flagship": true, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_core"}, {"state": "District of Columbia", "bill": "ACT 470", "year": 2022, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 1, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_core"}, {"state": "Florida", "bill": "CS/CS/HB 419 ", "year": 2021, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Florida", "bill": "CS/HB 1159", "year": 2021, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 1, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Florida", "bill": "SB 2524", "year": 2022, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 1, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Florida", "bill": "CS/HB 7039", "year": 2023, "flagship": true, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Florida", "bill": "CS/SB 290", "year": 2023, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": ["SP"], "runner": [], "classification": "narrow_peri"}, {"state": "Florida", "bill": "SB 80", "year": 2023, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 1, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Florida", "bill": "CS/HB 1361", "year": 2024, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Georgia", "bill": "SB 88", "year": 2021, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 1, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 1, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Georgia", "bill": "HB 538", "year": 2023, "flagship": true, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 1, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Georgia", "bill": "SB 211", "year": 2023, "flagship": false, "fp": true, "ol": true, "L": 1, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": ["L"], "classification": "broad_core"}, {"state": "Georgia", "bill": "HB 916", "year": 2024, "flagship": false, "fp": false, "ol": true, "L": 0, "I": 0, "PD": 1, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 1, "AC": 1, "best": ["R"], "runner": ["PD", "R"], "classification": "broad_core"}, {"state": "Georgia", "bill": "SB 93", "year": 2025, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 1, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Idaho", "bill": "HB 795", "year": 2022, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Idaho", "bill": "H 566", "year": 2024, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Illinois", "bill": "HB 2170", "year": 2019, "flagship": false, "fp": false, "ol": false, "L": 1, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Illinois", "bill": "SB 1569", "year": 2019, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 1, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 1, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Illinois", "bill": "SB 1952", "year": 2019, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 1, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Illinois", "bill": "SB 2243", "year": 2023, "flagship": true, "fp": true, "ol": true, "L": 0, "I": 1, "PD": 1, "TP": 1, "A": 1, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": ["PD"], "runner": ["A"], "classification": "broad_core"}, {"state": "Illinois", "bill": "HB 4844", "year": 2024, "flagship": false, "fp": true, "ol": true, "L": 1, "I": 1, "PD": 1, "TP": 0, "A": 1, "SP": 0, "F": 0, "R": 1, "AC": 1, "best": [], "runner": ["PD"], "classification": "broad_core"}, {"state": "Illinois", "bill": "SB 1920", "year": 2025, "flagship": false, "fp": false, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 1, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Illinois", "bill": "SB 1947", "year": 2025, "flagship": false, "fp": false, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 1, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Indiana", "bill": "HB 1003", "year": 2020, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Indiana", "bill": "HB 1558", "year": 2023, "flagship": true, "fp": true, "ol": true, "L": 0, "I": 1, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Indiana", "bill": "HB 1243", "year": 2024, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 1, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Indiana", "bill": "SB 0001", "year": 2024, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 1, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Indiana", "bill": "HB 1050", "year": 2025, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 1, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Indiana", "bill": "HB 1499", "year": 2025, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Indiana", "bill": "SB 1035", "year": 2025, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Iowa", "bill": "SF 2356", "year": 2020, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 1, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_core"}, {"state": "Iowa", "bill": "SF 2128", "year": 2022, "flagship": false, "fp": false, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 1, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_core"}, {"state": "Kansas", "bill": "HB 2134", "year": 2021, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 1, "best": [], "runner": [], "classification": "narrow_core"}, {"state": "Kansas", "bill": "HB 438", "year": 2024, "flagship": true, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 1, "TP": 1, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 1, "best": [], "runner": [], "classification": "narrow_core"}, {"state": "Kentucky", "bill": "HB 392", "year": 2019, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 1, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Kentucky", "bill": "SB 158", "year": 2020, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 1, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Kentucky", "bill": "SB 9", "year": 2022, "flagship": true, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 1, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Kentucky", "bill": "SB 156", "year": 2023, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 1, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Louisiana", "bill": "HB 12", "year": 2023, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Louisiana", "bill": "SB 508", "year": 2024, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 1, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Massachusetts", "bill": "HB 5050", "year": 2022, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Massachusetts", "bill": "H 4227", "year": 2025, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 1, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Michigan", "bill": "SB 0154", "year": 2019, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 1, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Michigan", "bill": "HB 4411", "year": 2021, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 1, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Michigan", "bill": "SB 845", "year": 2022, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 1, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Michigan", "bill": "SB 0008", "year": 2023, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 1, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 1, "AC": 0, "best": [], "runner": ["I"], "classification": "broad_core"}, {"state": "Michigan", "bill": "SB 0012", "year": 2023, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Michigan", "bill": "SB 0161", "year": 2023, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 1, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Michigan", "bill": "SB 0173", "year": 2023, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Michigan", "bill": "SB 0567 ", "year": 2023, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 1, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 1, "AC": 0, "best": ["I"], "runner": [], "classification": "broad_core"}, {"state": "Michigan", "bill": "SB 395", "year": 2023, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 1, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 1, "AC": 0, "best": [], "runner": ["I"], "classification": "broad_core"}, {"state": "Minnesota", "bill": "HF 1", "year": 2019, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 1, "A": 1, "SP": 0, "F": 0, "R": 0, "AC": 1, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Minnesota", "bill": "HF 33", "year": 2020, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 1, "SP": 0, "F": 0, "R": 0, "AC": 1, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Minnesota", "bill": "HF 2497", "year": 2023, "flagship": true, "fp": true, "ol": true, "L": 0, "I": 1, "PD": 0, "TP": 1, "A": 1, "SP": 0, "F": 0, "R": 0, "AC": 1, "best": ["AC"], "runner": ["A"], "classification": "broad_core"}, {"state": "Minnesota", "bill": "HF 4483", "year": 2024, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 1, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": ["TP"], "runner": [], "classification": "broad_core"}, {"state": "Minnesota", "bill": "HF 5237", "year": 2024, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 1, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 1, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Minnesota", "bill": "SF 3567", "year": 2024, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 1, "PD": 0, "TP": 1, "A": 1, "SP": 0, "F": 0, "R": 0, "AC": 1, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Minnesota", "bill": "HF 5", "year": 2025, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 1, "PD": 1, "TP": 0, "A": 1, "SP": 0, "F": 0, "R": 1, "AC": 1, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Missouri", "bill": "SB 727", "year": 2023, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Nebraska", "bill": "LB 528", "year": 2021, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Nevada", "bill": "AB 289", "year": 2019, "flagship": true, "fp": true, "ol": false, "L": 1, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Nevada", "bill": "SB 467", "year": 2019, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 1, "PD": 0, "TP": 0, "A": 1, "SP": 0, "F": 1, "R": 0, "AC": 0, "best": [], "runner": ["F"], "classification": "broad_core"}, {"state": "Nevada", "bill": "SB 2", "year": 2020, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 1, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 0, "AC": 1, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Nevada", "bill": "AB 400", "year": 2023, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Nevada", "bill": "SB 52", "year": 2024, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Nevada", "bill": "AB 335", "year": 2025, "flagship": false, "fp": false, "ol": false, "L": 1, "I": 1, "PD": 1, "TP": 0, "A": 1, "SP": 1, "F": 0, "R": 1, "AC": 1, "best": [], "runner": ["L"], "classification": "broad_core"}, {"state": "Nevada", "bill": "SB 278", "year": 2025, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Nevada", "bill": "SB 460", "year": 2025, "flagship": false, "fp": true, "ol": false, "L": 1, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "New Hampshire", "bill": "HB 377", "year": 2023, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 1, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_core"}, {"state": "New Mexico", "bill": "SB 22", "year": 2018, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_core"}, {"state": "New Mexico", "bill": "HB 5", "year": 2019, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_core"}, {"state": "New Mexico", "bill": "HB 481", "year": 2023, "flagship": true, "fp": false, "ol": false, "L": 0, "I": 1, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_core"}, {"state": "New Mexico", "bill": "HB 156", "year": 2025, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 1, "PD": 0, "TP": 1, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_core"}, {"state": "New York", "bill": "A.2687", "year": 2025, "flagship": false, "fp": false, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "North Carolina", "bill": "SB 387", "year": 2021, "flagship": true, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 1, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "North Carolina", "bill": "S 508", "year": 2023, "flagship": false, "fp": false, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Ohio", "bill": "HB 166", "year": 2019, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 1, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Ohio", "bill": "HB 101", "year": 2023, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 1, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Ohio", "bill": "HB 33", "year": 2023, "flagship": true, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Oklahoma", "bill": "SB 194", "year": 2019, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 1, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": ["TP"], "classification": "broad_core"}, {"state": "Oklahoma", "bill": "SB 601", "year": 2019, "flagship": true, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 1, "SP": 1, "F": 0, "R": 0, "AC": 1, "best": [], "runner": ["A", "SP", "AC"], "classification": "broad_core"}, {"state": "Oklahoma", "bill": "SB 362", "year": 2023, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 1, "SP": 0, "F": 0, "R": 0, "AC": 1, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Oklahoma", "bill": "SB 841", "year": 2025, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 1, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 1, "AC": 1, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Oregon", "bill": "HB 3427", "year": 2019, "flagship": false, "fp": false, "ol": false, "L": 1, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_core"}, {"state": "Oregon", "bill": "HB 3198", "year": 2023, "flagship": true, "fp": true, "ol": false, "L": 0, "I": 1, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_core"}, {"state": "Pennsylvania", "bill": "HB 1642", "year": 2021, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 1, "TP": 1, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_core"}, {"state": "Pennsylvania", "bill": "SB 801", "year": 2023, "flagship": false, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 1, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_core"}, {"state": "South Carolina", "bill": "HB 4100", "year": 2021, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "South Carolina", "bill": "SB 0418", "year": 2023, "flagship": true, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Tennessee", "bill": "HB 7004", "year": 2021, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_peri"}, {"state": "Texas", "bill": "HB 3", "year": 2019, "flagship": true, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 1, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 0, "AC": 1, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Texas", "bill": "SB 1267", "year": 2021, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 1, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Texas", "bill": "SB 2066", "year": 2021, "flagship": false, "fp": false, "ol": true, "L": 0, "I": 1, "PD": 1, "TP": 0, "A": 1, "SP": 0, "F": 1, "R": 1, "AC": 1, "best": [], "runner": ["F"], "classification": "broad_core"}, {"state": "Texas", "bill": "HB 2", "year": 2025, "flagship": false, "fp": true, "ol": false, "L": 0, "I": 0, "PD": 1, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Virginia", "bill": "SB 1406", "year": 2019, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 1, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Virginia", "bill": "HB 1012", "year": 2020, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Virginia", "bill": "HB 1508", "year": 2020, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 1, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Virginia", "bill": "HB 975", "year": 2020, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 1, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Virginia", "bill": "SB 238", "year": 2020, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 1, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Virginia", "bill": "HB 1089", "year": 2024, "flagship": false, "fp": false, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Virginia", "bill": "HB 2360", "year": 2025, "flagship": false, "fp": false, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Virginia", "bill": "SB 955", "year": 2025, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 1, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Washington", "bill": "SB 6168 ", "year": 2020, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Washington", "bill": "SB 5693", "year": 2022, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 1, "PD": 1, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Washington", "bill": "SB 5187", "year": 2023, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Washington", "bill": "SB 5950", "year": 2024, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 1, "PD": 1, "TP": 0, "A": 0, "SP": 0, "F": 1, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "Washington", "bill": "SB 5167", "year": 2025, "flagship": false, "fp": false, "ol": false, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 0, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "broad_core"}, {"state": "West Virginia", "bill": "HB 3035", "year": 2023, "flagship": true, "fp": true, "ol": true, "L": 0, "I": 0, "PD": 0, "TP": 0, "A": 0, "SP": 1, "F": 0, "R": 0, "AC": 0, "best": [], "runner": [], "classification": "narrow_peri"}];
+const CORE_FIELDS = ['I','PD','TP','A','R'];
+const CLASS_LABELS = {
+  broad_core: ['Broad / Core','sc-bc'],
+  narrow_core: ['Narrow / Core','sc-nc'],
+  narrow_peri: ['Narrow / Periphery','sc-np'],
+  pre_period: ['Pre-2019','sc-pp'],
+};
+
+let currentClass = 'all';
+
+function dot(v, field, isBest, isRunner) {
+  const isCore = CORE_FIELDS.includes(field);
+  if (!v) return '<span class="dot dot-none"></span>';
+  if (isBest)   return '<span class="dot dot-best" title="Best-in-class"></span>';
+  if (isRunner) return '<span class="dot dot-runner" title="Runner-up"></span>';
+  return isCore ? '<span class="dot dot-core"></span>' : '<span class="dot dot-peri"></span>';
+}
+
+function check(v) {
+  return v ? '<span class="ck">✓</span>' : '<span class="no">—</span>';
+}
+
+function setClass(cls, btn) {
+  currentClass = cls;
+  document.querySelectorAll('.class-btn').forEach(b => {
+    b.className = 'class-btn';
+  });
+  const activeMap = {all:'active-all', broad_core:'active-bc', narrow_core:'active-nc', narrow_peri:'active-np', pre_period:'active-pp'};
+  btn.classList.add(activeMap[cls] || 'active-all');
+  rebuildStateFilter();
+  filterTable();
+}
+
+function getFiltered() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const st = document.getElementById('stateFilter').value;
+  const fl = document.getElementById('flagFilter').value;
+  return DATA.filter(r => {
+    const mC = currentClass === 'all' || r.classification === currentClass;
+    const mQ = !q || r.state.toLowerCase().includes(q) || r.bill.toLowerCase().includes(q);
+    const mS = !st || r.state === st;
+    const mF = !fl ||
+      (fl==='flagship' && r.flagship) ||
+      (fl==='sor' && r.fp && r.ol) ||
+      (fl==='el_core' && (r.I||r.PD||r.TP||r.A||r.R)) ||
+      (fl==='best' && r.best && r.best.length>0) ||
+      (fl==='runner' && r.runner && r.runner.length>0);
+    return mC && mQ && mS && mF;
+  });
+}
+
+function rebuildStateFilter() {
+  const classData = currentClass === 'all' ? DATA : DATA.filter(r => r.classification === currentClass);
+  const states = [...new Set(classData.map(r => r.state))].sort();
+  const sel = document.getElementById('stateFilter');
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">All states</option>';
+  states.forEach(s => {
+    const o = document.createElement('option');
+    o.value = s; o.textContent = s;
+    if (s === cur) o.selected = true;
+    sel.appendChild(o);
+  });
+}
+
+const stateTotals = {};
+DATA.forEach(r => { stateTotals[r.state] = (stateTotals[r.state]||0)+1; });
+
+function buildRows(data) {
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = '';
+  let prevState = '';
+  const stateShown = {};
+  const filteredCounts = {};
+  data.forEach(r => { filteredCounts[r.state] = (filteredCounts[r.state]||0)+1; });
+
+  data.forEach(row => {
+    const isFirstInGroup = row.state !== prevState;
+    prevState = row.state;
+    const tr = document.createElement('tr');
+    if (isFirstInGroup) tr.classList.add('state-first');
+
+    const tdState = document.createElement('td');
+    tdState.className = 'state-cell';
+    if (!stateShown[row.state]) {
+      const cnt = filteredCounts[row.state];
+      const total = stateTotals[row.state];
+      const [label, cls] = CLASS_LABELS[row.classification] || ['',''];
+      tdState.innerHTML = '<span class="state-name">' + row.state + '</span>' +
+        '<span class="state-count">' + cnt + (cnt < total ? ' of ' + total : '') + ' bill' + (cnt!==1?'s':'') + '</span>' +
+        (label ? '<span class="state-class ' + cls + '">' + label + '</span>' : '');
+      stateShown[row.state] = true;
+    }
+    tr.appendChild(tdState);
+
+    const tdBill = document.createElement('td');
+    tdBill.className = 'bill';
+    tdBill.textContent = row.bill.trim();
+    tr.appendChild(tdBill);
+
+    const tdYear = document.createElement('td');
+    tdYear.className = 'year';
+    tdYear.textContent = row.year;
+    tr.appendChild(tdYear);
+
+    const tdFlag = document.createElement('td');
+    tdFlag.className = 'flag';
+    tdFlag.innerHTML = row.flagship ? '<span class="star">★</span>' : '<span class="no">—</span>';
+    tr.appendChild(tdFlag);
+
+    ['fp','ol'].forEach(f => {
+      const td = document.createElement('td');
+      td.innerHTML = check(row[f]);
+      tr.appendChild(td);
+    });
+
+    [['I','I'],['PD','PD'],['TP','TP'],['A','A'],['R','R'],
+     ['SP','SP'],['F','F'],['L','L'],['AC','AC']].forEach(([field, domain]) => {
+      const td = document.createElement('td');
+      const isBest   = row.best   && row.best.includes(domain);
+      const isRunner = !isBest && row.runner && row.runner.includes(domain);
+      td.innerHTML = dot(row[field], field, isBest, isRunner);
+      tr.appendChild(td);
+    });
+
+    tbody.appendChild(tr);
+  });
+
+  document.getElementById('count').textContent = data.length + ' bills';
+}
+
+function filterTable() {
+  buildRows(getFiltered());
+}
+
+// Init
+rebuildStateFilter();
+buildRows(DATA);
+</script>
+</body>
+</html>
