@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multilingual Learners in State Literacy Legislation — ASI Policy Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue-deep: #0C447C;
+  --blue-mid: #2271B3;
+  --blue-light: #E6F1FB;
+  --amber: #F5A623;
+  --amber-light: #FAEEDA;
+  --gray-text: #444;
+  --gray-light: #F3F2EF;
+  --gray-border: #D8D6D0;
+  --white: #FFFFFF;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body {
+  font-family:'Source Sans 3', sans-serif;
+  font-weight:400;
+  color:var(--gray-text);
+  background:var(--white);
+  line-height:1.6;
+}
+
+/* NAV */
+nav {
+  background:var(--blue-deep);
+  padding:0 2rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:52px;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+.nav-brand {
+  font-family:'Playfair Display', serif;
+  font-size:14px;
+  color:rgba(255,255,255,0.85);
+  letter-spacing:0.02em;
+  text-decoration:none;
+}
+.nav-links {
+  display:flex;
+  gap:1.5rem;
+  list-style:none;
+}
+.nav-links a {
+  font-size:12px;
+  color:rgba(255,255,255,0.7);
+  text-decoration:none;
+  letter-spacing:0.03em;
+  font-weight:500;
+  transition:color 0.15s;
+}
+.nav-links a:hover { color:rgba(255,255,255,1); }
+
+/* HERO */
+.hero {
+  background:var(--blue-deep);
+  color:white;
+  padding:5rem 2rem 4rem;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before {
+  content:'';
+  position:absolute;
+  top:-40px; right:-60px;
+  width:420px; height:420px;
+  border-radius:50%;
+  background:rgba(34,113,179,0.25);
+  pointer-events:none;
+}
+.hero::after {
+  content:'';
+  position:absolute;
+  bottom:-80px; left:10%;
+  width:280px; height:280px;
+  border-radius:50%;
+  background:rgba(245,166,35,0.12);
+  pointer-events:none;
+}
+.hero-inner {
+  max-width:780px;
+  margin:0 auto;
+  position:relative;
+  z-index:1;
+}
+.hero-kicker {
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--amber);
+  margin-bottom:1rem;
+}
+.hero h1 {
+  font-family:'Playfair Display', serif;
+  font-size:clamp(28px, 4vw, 44px);
+  font-weight:600;
+  line-height:1.2;
+  color:white;
+  margin-bottom:1.25rem;
+}
+.hero-sub {
+  font-size:16px;
+  font-weight:300;
+  color:rgba(255,255,255,0.75);
+  max-width:600px;
+  margin-bottom:2rem;
+  line-height:1.7;
+}
+.hero-meta {
+  display:flex;
+  gap:2rem;
+  flex-wrap:wrap;
+}
+.hero-stat {
+  display:flex;
+  flex-direction:column;
+}
+.hero-stat-n {
+  font-family:'Playfair Display', serif;
+  font-size:28px;
+  color:var(--amber);
+  line-height:1;
+}
+.hero-stat-label {
+  font-size:11px;
+  color:rgba(255,255,255,0.6);
+  margin-top:3px;
+  letter-spacing:0.02em;
+}
+
+/* SECTION */
+section {
+  max-width:860px;
+  margin:0 auto;
+  padding:3rem 2rem;
+}
+section + section {
+  border-top:1px solid var(--gray-border);
+}
+.section-kicker {
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--blue-mid);
+  margin-bottom:0.5rem;
+}
+section h2 {
+  font-family:'Playfair Display', serif;
+  font-size:22px;
+  font-weight:600;
+  color:var(--blue-deep);
+  margin-bottom:0.75rem;
+}
+section p {
+  font-size:14px;
+  line-height:1.7;
+  color:#555;
+  max-width:680px;
+}
+
+/* TOOLS GRID */
+.tools-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+  gap:1.25rem;
+  margin-top:1.75rem;
+}
+.tool-card {
+  border:1px solid var(--gray-border);
+  border-radius:10px;
+  padding:1.25rem 1.5rem;
+  text-decoration:none;
+  color:inherit;
+  display:flex;
+  flex-direction:column;
+  gap:0.5rem;
+  transition:border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  background:white;
+  position:relative;
+  overflow:hidden;
+}
+.tool-card::before {
+  content:'';
+  position:absolute;
+  top:0; left:0;
+  width:3px; height:100%;
+  background:var(--blue-mid);
+  opacity:0;
+  transition:opacity 0.15s;
+}
+.tool-card:hover {
+  border-color:var(--blue-mid);
+  box-shadow:0 4px 16px rgba(34,113,179,0.1);
+  transform:translateY(-2px);
+}
+.tool-card:hover::before { opacity:1; }
+.tool-card.amber::before { background:var(--amber); }
+.tool-card.amber:hover { border-color:var(--amber); box-shadow:0 4px 16px rgba(245,166,35,0.12); }
+
+.tool-tag {
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:2px 7px;
+  border-radius:4px;
+  display:inline-block;
+  width:fit-content;
+}
+.tool-tag.interactive { background:var(--blue-light); color:var(--blue-deep); }
+.tool-tag.analysis { background:var(--amber-light); color:#7A4700; }
+.tool-tag.visual { background:#F0EEF9; color:#3C3489; }
+
+.tool-card h3 {
+  font-family:'Playfair Display', serif;
+  font-size:15px;
+  font-weight:600;
+  color:var(--blue-deep);
+  line-height:1.3;
+}
+.tool-card p {
+  font-size:12px;
+  color:#777;
+  line-height:1.5;
+  max-width:none;
+}
+.tool-card .arrow {
+  font-size:16px;
+  color:var(--blue-mid);
+  margin-top:auto;
+  padding-top:0.5rem;
+  opacity:0.5;
+  transition:opacity 0.15s, transform 0.15s;
+}
+.tool-card:hover .arrow { opacity:1; transform:translateX(4px); }
+
+/* KEY FINDINGS */
+.findings-list {
+  margin-top:1.25rem;
+  display:flex;
+  flex-direction:column;
+  gap:0.75rem;
+}
+.finding-item {
+  display:flex;
+  gap:1rem;
+  align-items:flex-start;
+  padding:0.875rem 1rem;
+  background:var(--gray-light);
+  border-radius:8px;
+  font-size:13px;
+  line-height:1.6;
+  color:#444;
+}
+.finding-n {
+  font-family:'Playfair Display', serif;
+  font-size:18px;
+  font-weight:600;
+  color:var(--amber);
+  min-width:28px;
+  line-height:1.2;
+  margin-top:1px;
+}
+
+/* METHODOLOGY */
+.method-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.25rem;
+  margin-top:1.25rem;
+}
+.method-box {
+  padding:1rem 1.25rem;
+  border:1px solid var(--gray-border);
+  border-radius:8px;
+}
+.method-box h4 {
+  font-size:12px;
+  font-weight:600;
+  color:var(--blue-deep);
+  margin-bottom:0.4rem;
+  letter-spacing:0.02em;
+}
+.method-box p {
+  font-size:12px;
+  color:#666;
+  line-height:1.55;
+}
+
+/* FOOTER */
+footer {
+  background:var(--blue-deep);
+  color:rgba(255,255,255,0.6);
+  font-size:11px;
+  text-align:center;
+  padding:1.5rem 2rem;
+  line-height:1.7;
+}
+footer a { color:rgba(255,255,255,0.8); text-decoration:none; }
+footer a:hover { color:white; }
+
+@media(max-width:600px){
+  .hero { padding:3rem 1.25rem 2.5rem; }
+  .hero-meta { gap:1.25rem; }
+  .method-grid { grid-template-columns:1fr; }
+  .nav-links { display:none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#">ASI Literacy Policy Analysis</a>
+  <ul class="nav-links">
+    <li><a href="#tools">Interactive Tools</a></li>
+    <li><a href="#findings">Key Findings</a></li>
+    <li><a href="#methods">Methodology</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">ASI Literacy Policy Database · 2019–2025</div>
+    <h1>Multilingual Learners in State Literacy Legislation</h1>
+    <p class="hero-sub">An analysis of how 37 states have included multilingual learners in their literacy laws — examining the scope, depth, and quality of those provisions relative to the science of reading framework.</p>
+    <div class="hero-meta">
+      <div class="hero-stat">
+        <span class="hero-stat-n">148</span>
+        <span class="hero-stat-label">EL-coded bills</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-n">37</span>
+        <span class="hero-stat-label">States + DC referencing MLs</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-n">23</span>
+        <span class="hero-stat-label">States reaching the instructional core</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-n">15</span>
+        <span class="hero-stat-label">States with broad core integration</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="tools">
+  <div class="section-kicker">Interactive Tools</div>
+  <h2>Explore the Data</h2>
+  <p>The following tools allow you to explore the full dataset interactively. Each opens in a new tab. All data is drawn from the ASI Literacy Policy Database and the ASI EL Literacy Policy Database (2019–2025).</p>
+
+  <div class="tools-grid">
+
+    <a href="bill_summaries_by_bucket.html" target="_blank" class="tool-card">
+      <span class="tool-tag interactive">Featured · Table 2 in report</span>
+      <h3>Bill Summaries by State and Bucket</h3>
+      <p>The full database of 148 EL-coded bills, grouped by state and organized by the three classification buckets. Expandable summaries drawn from each bill's statutory text. Filter by classification, flagship, science-of-reading grounding, or best-in-class designation.</p>
+      <span class="arrow">→</span>
+    </a>
+
+    <a href="appendix_table_all_el_bills_148.html" target="_blank" class="tool-card">
+      <span class="tool-tag interactive">Interactive Table</span>
+      <h3>All EL Bills — Quick Reference Grid</h3>
+      <p>Compact dot-grid view of all 148 EL-coded bills. Shows 5P / OL / flagship status and instructional-core vs. periphery domain coverage at a glance. Useful when you want to scan many bills at once.</p>
+      <span class="arrow">→</span>
+    </a>
+
+  </div>
+</section>
+
+<section id="findings">
+  <div class="section-kicker">Key Findings</div>
+  <h2>What the Data Show</h2>
+  <p>The analysis reveals a mixed but improving landscape — more states are referencing multilingual learners, but inclusion and integration are not the same thing.</p>
+
+  <div class="findings-list">
+    <div class="finding-item">
+      <span class="finding-n">1</span>
+      <span>37 states now reference multilingual learners in their literacy legislation — more than double the 16 states in 2019. Growth came in two diffusion waves (2021 and 2023) after the initial science-of-reading surge, followed by consolidation in 2024–2025.</span>
+    </div>
+    <div class="finding-item">
+      <span class="finding-n">2</span>
+      <span>The number of states whose literacy legislation reaches at least one instructional-core domain has risen from 9 in 2019 to 23 in 2025. Cumulative depth has nearly doubled as well — the average state's literacy legislation now addresses 1.68 of the 5 core domains, up from 0.88 in 2019.</span>
+    </div>
+    <div class="finding-item">
+      <span class="finding-n">3</span>
+      <span>Only 15 of 37 states achieve broad integration across four or more EL domains, including the instructional core. Even within this group, depth varies considerably — five states earn their broad classification primarily through accumulating thin provisions across multiple bills rather than through integrated legislation.</span>
+    </div>
+    <div class="finding-item">
+      <span class="finding-n">4</span>
+      <span>The most consistent pattern in the dataset is siloing: EL provisions and science-of-reading provisions are developed in separate legislative vehicles, producing bills that are individually defensible but collectively incoherent. Nevada and Washington illustrate this most clearly.</span>
+    </div>
+    <div class="finding-item">
+      <span class="finding-n">5</span>
+      <span>Connecticut, Illinois, Michigan, Minnesota, and California stand out as the states where EL and science-of-reading policy are most consistently held together in statute — demonstrating that integrated EL literacy legislation is achievable, while leaving room to grow.</span>
+    </div>
+  </div>
+</section>
+
+<section id="methods">
+  <div class="section-kicker">Methodology</div>
+  <h2>About This Analysis</h2>
+  <p>This analysis draws on two databases maintained by the Albert Shanker Institute: the ASI Literacy Policy Database (549 bills, 51 jurisdictions, 2012–2025) and the ASI EL Literacy Policy Database (148 bills, 37 states + DC, 2019–2025). The EL database was hand-coded by domain using a nine-category framework.</p>
+
+  <div class="method-grid">
+    <div class="method-box">
+      <h4>Classification Framework</h4>
+      <p>States are classified along two dimensions: scope (narrow = 1–3 EL domains; broad = 4+) and location (instructional core vs. periphery). Instructional-core domains include instructional/program design, teacher PD, teacher preparation, assessment &amp; screening, and targeted resources &amp; staffing.</p>
+    </div>
+    <div class="method-box">
+      <h4>Bill Quality Indicators</h4>
+      <p>EL provisions are assessed against three bill-level indicators: flagship designation (primary state literacy bill), five-pillar coverage (phonemic and phonological awareness, phonics, fluency, vocabulary, comprehension), and oral language coverage. Together these capture how embedded EL provisions are in the science-of-reading framework.</p>
+    </div>
+    <div class="method-box">
+      <h4>Integration vs. Siloing</h4>
+      <p>A provision is classified as integrated when it appears in a bill covering five pillars and oral language. Siloed provisions appear in bills outside this framework. Where both exist for the same domain within a state, both are shown if they address different aspects.</p>
+    </div>
+    <div class="method-box">
+      <h4>Study Period</h4>
+      <p>The EL analysis covers 2019–2025, coinciding with the surge in science-of-reading legislation. Pre-2019 predecessor flagship bills (Mississippi 2013, Utah 2018) are excluded from the EL analysis as they fall outside the study window.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Albert Shanker Institute Literacy Policy Analysis · Data current through 2025</p>
+  <p style="margin-top:4px">Source: ASI Literacy Policy Database and ASI EL Literacy Policy Database (2019–2025)</p>
+</footer>
+
+</body>
+</html>
