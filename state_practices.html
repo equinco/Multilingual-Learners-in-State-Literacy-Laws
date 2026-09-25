@@ -172,15 +172,17 @@ const scoreN=s=>s.dots.reduce((a,v,i)=>a+(shown(v,i)>0?1:0),0);
 const scoreD=s=>s.dots.reduce((a,v,i)=>a+(shown(v,i)===2?1:0),0);
 const norm=s=>(s||'').toLowerCase();
 function dot(v,i,kind){const a=areaOf(i),sv=shown(v,i);
+  // one vocabulary everywhere: Addressed / Mentioned / Absent, with any detail after a dash
   let t;
-  if(a.bin) t=(v>0?(a.k==='pk'&&kind?kind:'Present'):'Absent');
-  else if(a.k==='ml') t=(kind||'none');
-  else if(v===2) t='Addressed';
-  else if(v===1) t=(a.k==='mt'?'Named, but not mandated or funded'
-                          :a.k==='tv'?'A teacher named on a body, but no substantive role'
-                          :a.k==='fe'?'Parents receive information about their child’s reading, but take no part'
-                          :(showMentions?'Mentioned':'Mentioned (hidden: showing addressed only)'));
-  else t=(a.k==='tv'?'No formal provision in the bills. Not evidence that teachers are excluded.':'Absent');
+  if(a.bin)            t = v>0 ? (kind?'Addressed — '+kind:'Addressed') : 'Absent';
+  else if(v===2)       t = kind ? 'Addressed — '+kind : 'Addressed';
+  else if(v===1)       t = (a.k==='mt' ? 'Mentioned — named, but not mandated or funded'
+                          : a.k==='tv' ? 'Mentioned — a teacher named on a body, no substantive role'
+                          : a.k==='fe' ? 'Mentioned — parents receive information, but take no part'
+                          : a.k==='ml' ? 'Mentioned — ancillary provisions only'
+                          : (showMentions?'Mentioned':'Mentioned (hidden: showing addressed only)'));
+  else                 t = (a.k==='tv' ? 'Absent — no formal provision in the bills. Not evidence that teachers are excluded.'
+                                       : 'Absent');
   const esc=x=>x.replace(/&/g,'&amp;').replace(/</g,'&lt;');
   return `<i class="dot v${sv}"><span class="tip"><b>${esc(a.chip)}</b>${esc(t)}</span></i>`;}
 function render(){
@@ -194,7 +196,7 @@ function render(){
     nShown++;
     const tr=document.createElement('tr'); tr.className='state';
     tr.innerHTML='<td class="nm"><span class="arw">▸</span>'+s.name+'</td>'+
-      D.areas.map((a,i)=>`<td class="d ${a.g}">${dot(s.dots[i],i,a.k==='pk'?s.pk:a.k==='ml'?s.ml:'')}</td>`).join('');
+      D.areas.map((a,i)=>`<td class="d ${a.g}">${dot(s.dots[i],i,a.k==='pk'?s.pk:a.k==='ml'?(s.ml==='none'?'':s.ml):'')}</td>`).join('');
     tr.onclick=()=>{const n=tr.nextElementSibling;n.classList.toggle('open');
       tr.querySelector('.arw').textContent=n.classList.contains('open')?'▾':'▸';};
     tb.appendChild(tr);
@@ -202,7 +204,7 @@ function render(){
     br.innerHTML='<td colspan="'+(KEYS.length+1)+'"><table class="inner">'+
       (bills.length?bills.map(b=>'<tr><td class="bid"><b>'+b.b+'</b><span class="yr">'+b.y+'</span>'+
         (b.f?' <span class="star" title="Flagship bill">★</span>':'')+
-        '</td>'+D.areas.map((a,i)=>`<td class="d ${a.g}" style="text-align:center">${dot(b.d[i],i,a.k==='pk'?b.pk:a.k==='ml'?b.ml:'')}</td>`).join('')+
+        '</td>'+D.areas.map((a,i)=>`<td class="d ${a.g}" style="text-align:center">${dot(b.d[i],i,a.k==='pk'?b.pk:a.k==='ml'?(b.ml==='none'?'':b.ml):'')}</td>`).join('')+
         '<td class="tp">'+(b.t||'')+'</td></tr>').join('')
        :'<tr><td class="bid" style="color:#999">no bills match the search</td></tr>')+'</table></td>';
     tb.appendChild(br);
