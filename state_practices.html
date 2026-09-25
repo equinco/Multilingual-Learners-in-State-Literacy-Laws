@@ -48,12 +48,16 @@ i.dot.v0{width:4px;height:4px;background:#C9CFD6}
 i.dot.v1{background:#fff;border:2px solid currentColor}
 i.dot.v2{background:currentColor}
 .content i.dot{color:var(--navy)} .educator i.dot{color:var(--gold)} .system i.dot{color:var(--slate)}
-i.dot .tip{display:none;position:absolute;left:50%;bottom:150%;transform:translateX(-50%);
+/* shared tooltip: dots and chips */
+.tip{display:none;position:absolute;left:50%;bottom:150%;transform:translateX(-50%);
   background:#222;color:#fff;font:11px/1.4 Georgia,serif;white-space:normal;width:max-content;max-width:240px;
   text-align:left;padding:5px 9px;border-radius:3px;z-index:50;box-shadow:0 2px 6px rgba(0,0,0,.25)}
-i.dot:hover .tip{display:block}
-i.dot .tip b{display:block;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#FFD9A0;margin-bottom:2px}
+i.dot:hover .tip, .chip:hover .tip{display:block}
+.tip b{display:block;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#FFD9A0;margin-bottom:2px}
 td.d:nth-last-child(-n+3) i.dot:hover .tip{left:auto;right:0;transform:none}
+.chip{position:relative}
+.chip .tip{top:130%;bottom:auto;left:0;transform:none;max-width:250px;font-weight:normal;color:#fff;text-transform:none;letter-spacing:0}
+.chip .tip em{display:block;margin-top:3px;color:#B9C6D4;font-style:normal;font-size:10px}
 td.d:nth-child(-n+3) i.dot:hover .tip{left:0;right:auto;transform:none}
 tr.bills{display:none}
 tr.bills.open{display:table-row}
@@ -223,7 +227,9 @@ function sortStates(){
 }
 document.addEventListener('DOMContentLoaded',()=>{
   D.areas.forEach(a=>{const b=document.createElement('button');b.className='chip g-'+a.g;
-    b.textContent=a.chip;b.title='Show only jurisdictions that address '+a.full;
+    const esc=x=>x.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+    b.innerHTML=esc(a.chip)+'<span class="tip"><b>'+esc(a.chip)+'</b>'+esc(a.full)
+      +'<em>Click to show only these jurisdictions</em></span>';
     b.onclick=()=>{sel.has(a.k)?sel.delete(a.k):sel.add(a.k);b.classList.toggle('on');render();};
     const host=document.getElementById('pc'+a.pr); if(host) host.appendChild(b);});
   const so=document.getElementById('sort');
