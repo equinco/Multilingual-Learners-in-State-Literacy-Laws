@@ -48,11 +48,13 @@ i.dot.v0{width:4px;height:4px;background:#C9CFD6}
 i.dot.v1{background:#fff;border:2px solid currentColor}
 i.dot.v2{background:currentColor}
 .content i.dot{color:var(--navy)} .educator i.dot{color:var(--gold)} .system i.dot{color:var(--slate)}
-i.dot[data-t]:hover::after{content:attr(data-t);position:absolute;left:50%;bottom:150%;transform:translateX(-50%);
-  background:#222;color:#fff;font:11px/1.35 Georgia,serif;white-space:normal;width:max-content;max-width:230px;
-  text-align:left;padding:4px 8px;border-radius:3px;z-index:50;box-shadow:0 2px 6px rgba(0,0,0,.25)}
-td.d:nth-last-child(-n+3) i.dot[data-t]:hover::after{left:auto;right:0;transform:none}
-td.d:nth-child(-n+3) i.dot[data-t]:hover::after{left:0;right:auto;transform:none}
+i.dot .tip{display:none;position:absolute;left:50%;bottom:150%;transform:translateX(-50%);
+  background:#222;color:#fff;font:11px/1.4 Georgia,serif;white-space:normal;width:max-content;max-width:240px;
+  text-align:left;padding:5px 9px;border-radius:3px;z-index:50;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+i.dot:hover .tip{display:block}
+i.dot .tip b{display:block;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#FFD9A0;margin-bottom:2px}
+td.d:nth-last-child(-n+3) i.dot:hover .tip{left:auto;right:0;transform:none}
+td.d:nth-child(-n+3) i.dot:hover .tip{left:0;right:auto;transform:none}
 tr.bills{display:none}
 tr.bills.open{display:table-row}
 tr.bills td{padding:0 0 8px 0;background:#FCFCFD;border-top:none}
@@ -171,15 +173,16 @@ const scoreD=s=>s.dots.reduce((a,v,i)=>a+(shown(v,i)===2?1:0),0);
 const norm=s=>(s||'').toLowerCase();
 function dot(v,i,kind){const a=areaOf(i),sv=shown(v,i);
   let t;
-  if(a.bin) t=a.full+(v>0?(a.k==='pk'&&kind?' — '+kind:' — Present'):' — Absent');
-  else if(a.k==='ml') t=a.full+' — '+(kind||'none');
-  else if(v===2) t=a.full+' — Addressed';
-  else if(v===1) t=a.full+(a.k==='mt'?' — Named, but not mandated or funded'
-                          :a.k==='tv'?' — A teacher named on a body, but no substantive role'
-                          :a.k==='fe'?' — Parents receive information about their child’s reading, but take no part'
-                          :(showMentions?' — Mentioned':' — Mentioned (hidden: showing addressed only)'));
-  else t=a.full+(a.k==='tv'?' — No formal provision in the bills. Not evidence that teachers are excluded.':' — Absent');
-  return `<i class="dot v${sv}" data-t="${t.replace(/"/g,'&quot;')}"></i>`;}
+  if(a.bin) t=(v>0?(a.k==='pk'&&kind?kind:'Present'):'Absent');
+  else if(a.k==='ml') t=(kind||'none');
+  else if(v===2) t='Addressed';
+  else if(v===1) t=(a.k==='mt'?'Named, but not mandated or funded'
+                          :a.k==='tv'?'A teacher named on a body, but no substantive role'
+                          :a.k==='fe'?'Parents receive information about their child’s reading, but take no part'
+                          :(showMentions?'Mentioned':'Mentioned (hidden: showing addressed only)'));
+  else t=(a.k==='tv'?'No formal provision in the bills. Not evidence that teachers are excluded.':'Absent');
+  const esc=x=>x.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  return `<i class="dot v${sv}"><span class="tip"><b>${esc(a.chip)}</b>${esc(t)}</span></i>`;}
 function render(){
   const tb=document.getElementById('tb'); tb.innerHTML='';
   let nShown=0;
