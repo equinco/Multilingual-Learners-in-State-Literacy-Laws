@@ -133,7 +133,6 @@ table.fd td.fdd{width:38%}
   <div class="row1">
     <input type="search" id="q" placeholder="Search bill number or topic…">
     <select id="sort" title="Sort jurisdictions"></select>
-    <label class="tog"><input type="checkbox" id="mentions" checked> Count “mentioned” as addressed</label>
     <button class="viewbtn" id="expand">Expand / collapse all</button>
     <button class="viewbtn" id="clr">Clear filters</button>
     <span class="count" id="cnt"></span>
@@ -151,7 +150,7 @@ table.fd td.fdd{width:38%}
 <div class="legend">
  <table>
   <tr><td><span class="content"><i class="dot v2"></i></span></td><td>Addressed in at least one bill</td></tr>
-  <tr><td><span class="content"><i class="dot v1"></i></span></td><td>Mentioned only — switch off “Count ‘mentioned’ as addressed” to hide these</td></tr>
+  <tr><td><span class="content"><i class="dot v1"></i></span></td><td>Mentioned, but below the threshold for this area — never counted as addressed</td></tr>
   <tr><td><span class="content"><i class="dot v0"></i></span></td><td>Absent</td></tr>
  </table>
  
@@ -172,14 +171,12 @@ table.fd td.fdd{width:38%}
 
 const D=DATA_JSON;
 const KEYS=D.areas.map(a=>a.k);
-let sel=new Set(), sortBy='name', q='', showMentions=true;
+let sel=new Set(), sortBy='name', q='';
 const areaOf=i=>D.areas[i];
-const shown=(v,i)=>{const a=areaOf(i);
-  if(a.bin) return v>0?2:0;                       // present / absent indicators
-  if(a.k==='mt'||a.k==='tv'||a.k==='fe'||a.k==='ml') return v===2?2:0;   // MTSS, Teacher Voice, Family Engagement: only the substantive level counts
-  return v===2?2:(v===1&&showMentions?1:0);};
-const scoreN=s=>s.dots.reduce((a,v,i)=>a+(shown(v,i)>0?1:0),0);
-const scoreD=s=>s.dots.reduce((a,v,i)=>a+(shown(v,i)===2?1:0),0);
+const shown=(v,i)=>areaOf(i).bin ? (v>0?2:0) : v;   // 2 filled and counts, 1 hollow and never counts, 0 absent
+const counts=(v,i)=>shown(v,i)===2;                 // only a filled dot is "addressed"
+const scoreN=s=>s.dots.reduce((a,v,i)=>a+(counts(v,i)?1:0),0);
+const scoreD=s=>s.dots.reduce((a,v,i)=>a+(counts(v,i)?1:0),0);
 const norm=s=>(s||'').toLowerCase();
 function dot(v,i,kind){const a=areaOf(i),sv=shown(v,i);
   // one vocabulary everywhere: Addressed / Mentioned / Absent, with any detail after a dash
@@ -190,7 +187,7 @@ function dot(v,i,kind){const a=areaOf(i),sv=shown(v,i);
                           : a.k==='tv' ? 'Mentioned — a teacher named on a body, no substantive role'
                           : a.k==='fe' ? 'Mentioned — parents receive information, but take no part'
                           : a.k==='ml' ? 'Mentioned — ancillary provisions only'
-                          : (showMentions?'Mentioned':'Mentioned (hidden: showing addressed only)'));
+                          : 'Mentioned');
   else                 t = (a.k==='tv' ? 'Absent — no formal provision in the bills. Not evidence that teachers are excluded.'
                                        : 'Absent');
   const esc=x=>x.replace(/&/g,'&amp;').replace(/</g,'&lt;');
@@ -199,7 +196,7 @@ function render(){
   const tb=document.getElementById('tb'); tb.innerHTML='';
   let nShown=0;
   D.states.forEach(s=>{
-    if([...sel].some(k=>{const i=KEYS.indexOf(k);return shown(s.dots[i],i)===0;})) return;
+    if([...sel].some(k=>{const i=KEYS.indexOf(k);return !counts(s.dots[i],i);})) return;
     let bills=s.bills;
     if(q){bills=bills.filter(b=>norm(b.b).includes(q)||norm(b.t).includes(q)||norm(s.name).includes(q));
           if(!bills.length&&!norm(s.name).includes(q)) return;}
@@ -226,9 +223,8 @@ function sortStates(){
   D.states.sort((a,b)=>{
     if(by==='name') return a.name.localeCompare(b.name);
     if(by==='breadth') return scoreN(b)-scoreN(a)||scoreD(b)-scoreD(a)||a.name.localeCompare(b.name);
-    if(by==='depth') return scoreD(b)-scoreD(a)||scoreN(b)-scoreN(a)||a.name.localeCompare(b.name);
     const i=KEYS.indexOf(by);
-    return shown(b.dots[i],i)-shown(a.dots[i],i)||b.dots[i]-a.dots[i]||a.name.localeCompare(b.name);
+    return shown(b.dots[i],i)-shown(a.dots[i],i)||a.name.localeCompare(b.name);
   });
 }
 document.addEventListener('DOMContentLoaded',()=>{
@@ -237,15 +233,13 @@ document.addEventListener('DOMContentLoaded',()=>{
     b.onclick=()=>{sel.has(a.k)?sel.delete(a.k):sel.add(a.k);b.classList.toggle('on');render();};
     const host=document.getElementById('pc'+a.pr); if(host) host.appendChild(b);});
   const so=document.getElementById('sort');
-  [['name','Jurisdiction A–Z'],['breadth','Areas Addressed'],['depth','Areas Addressed In Depth']].concat(
+  [['name','Jurisdiction A–Z'],['breadth','Areas Addressed']].concat(
     D.areas.map(a=>[a.k,a.chip])).forEach(([v,l])=>{
       const o=document.createElement('option');o.value=v;o.textContent=l;so.appendChild(o);});
   so.onchange=e=>{sortBy=e.target.value;sortStates();render();};
   document.getElementById('q').oninput=e=>{q=norm(e.target.value.trim());render();};
   document.getElementById('clr').onclick=()=>{sel.clear();q='';document.getElementById('q').value='';
     document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));render();};
-  const mtg=document.getElementById('mentions');
-  mtg.onchange=e=>{showMentions=e.target.checked;sortStates();render();};
   document.getElementById('expand').onclick=()=>{const any=document.querySelector('tr.bills:not(.open)');
     document.querySelectorAll('tr.bills').forEach(r=>r.classList.toggle('open',!!any));
     document.querySelectorAll('.arw').forEach(a=>a.textContent=any?'▾':'▸');};
