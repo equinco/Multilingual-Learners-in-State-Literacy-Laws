@@ -188,8 +188,7 @@ function dot(v,i,kind){const a=areaOf(i),sv=shown(v,i);
                           : a.k==='fe' ? 'Mentioned — parents receive information, but take no part'
                           : a.k==='ml' ? 'Mentioned — ancillary provisions only'
                           : 'Mentioned');
-  else                 t = (a.k==='tv' ? 'Absent — no formal provision in the bills. Not evidence that teachers are excluded.'
-                                       : 'Absent');
+  else                 t = 'Absent';
   const esc=x=>x.replace(/&/g,'&amp;').replace(/</g,'&lt;');
   return `<i class="dot v${sv}"><span class="tip"><b>${esc(a.chip)}</b>${esc(t)}</span></i>`;}
 function render(){
