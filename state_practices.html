@@ -189,6 +189,7 @@ table.fd td.fdd{width:38%}
 
 const D=DATA_JSON;
 const KEYS=D.areas.map(a=>a.k);
+const esc=x=>String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const FRT='Names the literacy research base — the bill invokes the science of reading or evidence-based reading, names at least one pillar of reading, or addresses dyslexia', NFT='Does not name the literacy research base — the bill builds literacy machinery without invoking the science of reading or evidence-based reading, and without naming any pillar of reading or dyslexia';
 const TAGD={Budget:'Appropriations act — the literacy provisions sit inside a budget bill',
   Resolution:'Resolution — expresses intent or creates a study body; it does not change statute',
@@ -221,7 +222,6 @@ function dot(v,i,kind){const a=areaOf(i),sv=shown(v,i);
                           : a.k==='ml' ? 'Mentioned — ancillary provisions only'
                           : 'Mentioned');
   else                 t = 'Absent';
-  const esc=x=>x.replace(/&/g,'&amp;').replace(/</g,'&lt;');
   return `<i class="dot v${sv}"><span class="tip"><b>${esc(a.chip)}</b>${esc(t)}</span></i>`;}
 function render(){
   const tb=document.getElementById('tb'); tb.innerHTML='';
