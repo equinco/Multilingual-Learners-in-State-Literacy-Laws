@@ -179,14 +179,14 @@ span.pcount{display:inline-block;font-size:9.5px;font-weight:700;padding:2px 6px
 .slabs{display:block;height:84px;white-space:nowrap;margin-bottom:2px;overflow:visible}
 .slabs i{position:relative;display:inline-block;width:30px;height:80px;overflow:visible;vertical-align:bottom}
 #billsTable th.th-status .slabs i span{position:absolute;left:4px;bottom:2px;transform:rotate(-40deg);transform-origin:left bottom;font-weight:600;font-size:10px;line-height:1;letter-spacing:.1px;color:#0C447C;white-space:nowrap;text-transform:none}
-td.status{white-space:nowrap;padding-right:16px;border-right:1px solid #ECEFF3}
+td.status{white-space:nowrap;padding-right:26px;padding-left:6px;border-right:1px solid #ECEFF3}
 .ck{display:inline-block;width:30px;text-align:center;font-size:11px;color:#1F6A1F;font-weight:700}
 .ck.no{color:#D4D9DF;font-weight:400}
 div.prins{margin:2px 0 3px;font:10.5px/1.45 Georgia,serif;color:#00457C}
 div.prins b{font:bold 8.5px -apple-system,Helvetica,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:#00457C}
 div.prins span{color:#00457C}
 
-td.domains{padding-left:14px}
+td.domains{padding-left:22px}
 .dots i.dot{margin-right:3px}
 .dots.core{padding-right:8px}
 .state-rail{display:inline-block}
@@ -200,6 +200,11 @@ tr.state-grid-row[data-class="narrow_peri"] .sh-name,tr.state-header[data-class=
 
 .swatch{display:inline-block;width:0;height:13px;border-left:4px solid;margin-right:7px;vertical-align:-2px}
 .lg .kn{font-weight:700}
+
+#billsTable th.th-status{position:relative;overflow:visible;z-index:23;vertical-align:bottom;padding-right:26px;padding-left:6px}
+#billsTable th.th-status .slabs{overflow:visible}
+#billsTable th.th-status .slabs i,#billsTable th.th-status .slabs i span{overflow:visible}
+#billsTable th.th-domains{padding-left:22px}
 </style>
 </head>
 <body>
