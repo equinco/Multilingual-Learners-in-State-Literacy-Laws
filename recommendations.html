@@ -79,7 +79,7 @@ li.rec::before{content:"";position:absolute;left:4px;top:22px;width:6px;height:6
 
 .meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 0;margin-top:7px}
 .mini{font:bold 9.5px -apple-system,Helvetica,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:#8A97A2;margin-right:6px}
-.levers{padding-right:14px;margin-right:14px;border-right:1px solid var(--line)}
+.levers{display:inline-block;min-width:168px;padding-right:14px;margin-right:14px;border-right:1px solid var(--line)}
 .lev{font-size:12px;color:var(--gray)}
 
 details{margin:0 14px 0 0}
@@ -206,7 +206,7 @@ document.querySelector('#sections').innerHTML = S.map((s,i)=>{
       <div class="rec-copy"><b>${esc(title)}</b><span>${esc(desc)}</span></div>
       <div class="meta">
         <span class="levers">${levers.split(' ').map(l=>`<span class="lev">${esc(l.charAt(0)+l.slice(1).toLowerCase())}</span>`).join('<span class="lev"> · </span>')}</span>
-        <span class="mini">References</span>${aft}
+        ${aft}
         <details><summary>ASI coding</summary><div class="asi-body">
           <div class="xw"><b>Linked indicators</b>${vars.split('|').map(v=>`<span class="var">${esc(v)}</span>`).join('')}</div>
           <div class="limit">${esc(limit)}</div>
