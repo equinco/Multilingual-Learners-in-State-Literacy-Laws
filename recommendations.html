@@ -83,15 +83,17 @@ li.rec::before{content:"";position:absolute;left:4px;top:22px;width:6px;height:6
 .rec-copy b{color:var(--title)}
 .rec-copy b::after{content:"";display:inline-block;height:.82em;border-right:2px solid var(--gold);margin:0 10px;vertical-align:-.06em}
 
-.meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 0;margin-top:7px}
+.meta{display:inline}
+.meta > *{margin-left:9px}
 .mini{font:bold 9.5px -apple-system,Helvetica,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:#8A97A2;margin-right:6px}
 
-details{margin:0 14px 0 0}
+details{display:inline-block;vertical-align:baseline;margin:0}
+details[open]{display:block;margin:7px 0 2px}
 details summary{cursor:pointer;font:12px Georgia,serif;color:var(--slate);list-style:none;
   text-decoration:underline;text-decoration-color:#BFCAD3;text-underline-offset:3px}
 details summary::-webkit-details-marker{display:none}
 details summary:hover{color:var(--navy);text-decoration-color:var(--navy)}
-details[open]{flex-basis:100%}
+
 .aft summary{color:var(--aft-ink);font-weight:bold;text-decoration-color:#A9C6E0}
 .aft summary:hover{color:#00325C;text-decoration-color:var(--aft)}
 .aft-body{background:var(--aft-bg);border-left:3px solid var(--aft);padding:10px 14px;margin:9px 0 4px;
@@ -204,14 +206,10 @@ document.querySelector('#sections').innerHTML = S.map((s,i)=>{
         `<p>${esc(a.at(-1))}<a class="passage" href="aft-resolution.html#${AFT_ANCHOR[k]||''}">View passage →</a></p>`+
       `</div></details>` : '';
     return `<li class="rec" data-levers="${levers}">
-      <div class="rec-copy"><b>${esc(title)}</b><span>${esc(desc)}</span></div>
-      <div class="meta">
-        ${aft}
-        <details><summary>ASI coding</summary><div class="asi-body">
+      <div class="rec-copy"><b>${esc(title)}</b><span>${esc(desc)}</span><span class="meta">${aft}<details><summary>ASI coding</summary><div class="asi-body">
           <div class="xw"><b>Linked indicators</b>${vars.split('|').map(v=>`<span class="var">${esc(v)}</span>`).join('')}</div>
           ${limit?`<div class="limit">${esc(limit)}</div>`:''}
-        </div></details>
-      </div></li>`;
+      </div></details></span></div></li>`;
   }).join('');
   return `<section class="section" id="s${i+1}">
     <div class="sec-head"><span class="num">0${i+1}</span><h2>${esc(s.title)}</h2></div>
