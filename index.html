@@ -342,7 +342,8 @@ footer a:hover { color:white; }
 .mapctl button.on{background:var(--blue-deep);border-color:var(--blue-deep);color:#fff}
 .usmap{display:grid;grid-template-columns:repeat(11,1fr);gap:5px;max-width:620px;position:relative}
 .usmap .cell{aspect-ratio:1;border-radius:3px;display:flex;align-items:center;justify-content:center;
-  font:700 10.5px 'Source Sans 3',sans-serif;cursor:default;transition:transform .1s;position:relative}
+  font:700 10.5px 'Source Sans 3',sans-serif;cursor:pointer;transition:transform .1s;position:relative;
+  text-decoration:none}
 .usmap .cell:hover{transform:scale(1.14);z-index:4;box-shadow:0 2px 10px rgba(12,68,124,.28)}
 .maplegend{display:flex;align-items:center;gap:7px;margin-top:1rem;font-size:11.5px;color:#777;flex-wrap:wrap}
 .maplegend i{width:19px;height:13px;border-radius:2px;display:inline-block}
@@ -452,7 +453,7 @@ footer a:hover { color:white; }
 <section id="mapsec">
   <div class="section-kicker">Geography</div>
   <h2>Where the Principles Land</h2>
-  <p>Each square is a jurisdiction, placed roughly where it sits on the map and shaded by how many of the nine AFT early reading principles its enacted laws address. Hover a square to see which ones. Select a principle to see the states whose laws speak to it.</p>
+  <p>Each square is a jurisdiction, placed roughly where it sits on the map and shaded by how many of the nine AFT early reading principles its enacted laws address. Hover a square to see which ones, or click through to that jurisdiction’s full profile. Select a principle to see the states whose laws speak to it.</p>
 
   <div class="mapwrap">
     <div class="mapctl" id="mapctl"></div>
@@ -481,7 +482,8 @@ function colour(d){ return sel? (d.p.includes(sel)?"#0C447C":"#E8ECEF") : SCALE[
 function draw(){
   const g=document.getElementById('usmap'); g.innerHTML='';
   MAP.forEach(d=>{
-    const e=document.createElement('div');
+    const e=document.createElement('a');
+    e.href='state.html?s='+d.a;
     e.className='cell'; e.style.gridRow=d.r+1; e.style.gridColumn=d.c+1;
     e.style.background=colour(d);
     const dark = sel ? d.p.includes(sel) : d.k>=5;
@@ -490,7 +492,7 @@ function draw(){
     e.addEventListener('mousemove',ev=>{
       tip.innerHTML='<b>'+d.n+'</b><span class="k">'+d.k+' of 9 principles</span>'+
         (d.p.length? '<ul>'+d.p.map(p=>'<li>'+p+'. '+PN[p-1]+'</li>').join('')+'</ul>'
-                   : '<div class="none">No principle addressed at the displayed threshold</div>');
+                   : '<div class="none">No principle addressed at the displayed threshold</div>')+'<div style="margin-top:6px;color:#F5A623;font-size:11px">Click for the full profile →</div>';
       tip.style.display='block';
       const w=tip.offsetWidth,h=tip.offsetHeight;
       tip.style.left=Math.min(ev.clientX+14, innerWidth-w-10)+'px';
