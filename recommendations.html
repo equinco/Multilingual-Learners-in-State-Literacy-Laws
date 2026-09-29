@@ -67,8 +67,14 @@ h1{font-size:30px;line-height:1.2;color:var(--title);margin:9px 0 10px;text-wrap
   border-left:4px solid var(--good);font-size:13.5px;line-height:1.6;color:#33463A;max-width:900px}
 .getting b{display:block;font:bold 13px -apple-system,Helvetica,sans-serif;letter-spacing:.09em;
   text-transform:uppercase;color:var(--good);margin-bottom:7px}
-.subhead{font:bold 10px -apple-system,Helvetica,sans-serif;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--gray);margin:22px 0 2px}
+button.subhead{display:flex;align-items:center;gap:7px;width:100%;text-align:left;
+  font:bold 10px -apple-system,Helvetica,sans-serif;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gray);margin:22px 0 2px;padding:6px 0;background:none;border:0;border-top:1px solid #EDF0F3;cursor:pointer}
+button.subhead:hover{color:var(--title)}
+button.subhead .car{display:inline-block;color:var(--gold);font-size:11px;transition:transform .15s;transform:rotate(90deg)}
+button.subhead[aria-expanded="false"] .car{transform:rotate(0deg)}
+button.subhead .n{margin-left:auto;font-weight:normal;letter-spacing:.02em;text-transform:none;font-size:11px;color:#9AA6B0}
+ul.recs[hidden]{display:none}
 
 ul.recs{list-style:none;padding:0;margin:0}
 li.rec{padding:14px 0 15px 22px;position:relative;border-top:1px solid #EDF0F3}
@@ -168,6 +174,7 @@ footer.site a{color:rgba(255,255,255,.85)}
         <button class="filter" data-filter="LAW">Law</button>
         <button class="filter" data-filter="GUIDANCE">Guidance</button>
         <button class="filter" data-filter="IMPLEMENTATION">Implementation</button>
+        <button class="filter" id="toggleall" type="button">Collapse all</button>
         <span class="count" id="count"></span>
       </div>
       <div id="sections"></div>
@@ -220,8 +227,8 @@ document.querySelector('#sections').innerHTML = S.map((s,i)=>{
     <div class="sec-head"><span class="num">0${i+1}</span><h2>${esc(s.title)}</h2></div>
     <p class="sec-lead">${esc(s.lead)}</p>
     ${s.right?`<div class="getting"><b>What states are getting right</b>${esc(s.right)}</div>`:''}
-    <div class="subhead">What else states should consider</div>
-    <ul class="recs">${items}</ul>
+    <button class="subhead" aria-expanded="true" aria-controls="recs${i+1}"><span class="car">›</span>What else states should consider<span class="n">${s.items.length}</span></button>
+    <ul class="recs" id="recs${i+1}">${items}</ul>
   </section>`;
 }).join('');
 
@@ -238,7 +245,25 @@ function filter(v){
   });
   document.querySelector('#count').textContent = n+' recommendation'+(n===1?'':'s');
 }
-document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>filter(b.dataset.filter)));
+document.querySelectorAll('.filter[data-filter]').forEach(b=>b.addEventListener('click',()=>filter(b.dataset.filter)));
+document.querySelectorAll('button.subhead').forEach(b=>b.addEventListener('click',()=>{
+  const open=b.getAttribute('aria-expanded')==='true';
+  b.setAttribute('aria-expanded',String(!open));
+  document.getElementById(b.getAttribute('aria-controls')).hidden=open;
+  syncToggleAll();
+}));
+function syncToggleAll(){
+  const any=[...document.querySelectorAll('button.subhead')].some(b=>b.getAttribute('aria-expanded')==='true');
+  document.getElementById('toggleall').textContent=any?'Collapse all':'Expand all';
+}
+document.getElementById('toggleall').addEventListener('click',()=>{
+  const open=[...document.querySelectorAll('button.subhead')].some(b=>b.getAttribute('aria-expanded')==='true');
+  document.querySelectorAll('button.subhead').forEach(b=>{
+    b.setAttribute('aria-expanded',String(!open));
+    document.getElementById(b.getAttribute('aria-controls')).hidden=open;
+  });
+  syncToggleAll();
+});
 filter('ALL');
 </script>
 </body>
