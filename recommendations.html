@@ -96,10 +96,10 @@ details[open]{flex-basis:100%}
 .aft summary{color:var(--aft-ink);font-weight:bold;text-decoration-color:#A9C6E0}
 .aft summary:hover{color:#00325C;text-decoration-color:var(--aft)}
 .aft-body{background:var(--aft-bg);border-left:3px solid var(--aft);padding:10px 14px;margin:9px 0 4px;
-  max-width:680px;font-size:13px;line-height:1.55;color:#33485C}
+  max-width:880px;font-size:13px;line-height:1.55;color:#33485C}
 .aft-body strong{display:block;color:var(--aft-ink);margin-bottom:4px;font-size:12.5px}
 .aft-body p{margin:6px 0}
-.aft-body a.passage{display:inline-block;margin-top:4px;color:var(--aft-ink);font-weight:bold;
+.aft-body a.passage{white-space:nowrap;margin-left:6px;color:var(--aft-ink);font-weight:bold;
   text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;text-decoration-color:var(--aft)}
 .aft-body a.passage:hover{color:#00325C;text-decoration-color:#00325C}
 .aft-body a{color:var(--aft-ink)}
@@ -204,8 +204,7 @@ document.querySelector('#sections').innerHTML = S.map((s,i)=>{
     const a = AFT[k];
     const aft = a ? `<details class="aft"><summary>✦ AFT</summary><div class="aft-body">`+
         `<strong>${a.slice(0,-1).map(n=>`${n}. ${AFT_NAMES[n-1]}`).join(' · ')}</strong>`+
-        `<p>${esc(a.at(-1))}</p>`+
-        `<a class="passage" href="${AFT_URL+frag(k)}" target="_blank" rel="noopener">View passage →</a>`+
+        `<p>${esc(a.at(-1))}<a class="passage" href="${AFT_URL+frag(k)}" target="_blank" rel="noopener">View passage →</a></p>`+
       `</div></details>` : '';
     return `<li class="rec" data-levers="${levers}">
       <div class="rec-copy"><b>${esc(title)}</b><span>${esc(desc)}</span></div>
