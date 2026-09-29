@@ -7,7 +7,7 @@
 <meta name="description" content="Research-informed literacy policy recommendations, crosswalked to what state legislation actually contains.">
 <style>
 :root{--navy:#0C447C;--title:#1F4E79;--brown:#854F0B;--slate:#3F5A70;--gold:#C98A3C;
-  --line:#D8DEE6;--ink:#222;--gray:#666;--bg-content:#EEF4FB;--bg-educator:#FBF3E6;--bg-system:#EFF3F5;--paper:#FCFCFD}
+  --line:#D8DEE6;--ink:#222;--gray:#666;--aft:#005DAA;--aft-ink:#00457C;--aft-bg:#EDF4FB;--bg-content:#EEF4FB;--bg-educator:#FBF3E6;--bg-system:#EFF3F5;--paper:#FCFCFD}
 *{box-sizing:border-box}
 body{margin:0;background:#fff;color:var(--ink);font:15px/1.6 Georgia,'Times New Roman',serif}
 
@@ -30,7 +30,9 @@ h1{font-size:30px;line-height:1.2;color:var(--title);margin:9px 0 10px;text-wrap
 .howto{padding:14px 17px;background:var(--bg-content);border-left:4px solid var(--navy);
   font-size:13px;line-height:1.6;color:#33444F}
 .howto b{color:var(--title)}
-.howto .aft-note{display:block;margin-top:7px;color:#40566A}
+.howto .aft-note{display:block;margin-top:7px;color:#33485C;border-top:1px solid #CBDCEC;padding-top:7px}
+.howto .aft-note a{color:var(--aft-ink)}
+.howto .aft-note::first-letter{color:var(--aft)}
 .howto a{color:var(--navy)}
 
 .layout{display:grid;grid-template-columns:210px minmax(0,1fr);gap:30px;margin-top:22px}
@@ -91,16 +93,16 @@ details summary{cursor:pointer;font:12px Georgia,serif;color:var(--slate);list-s
 details summary::-webkit-details-marker{display:none}
 details summary:hover{color:var(--navy);text-decoration-color:var(--navy)}
 details[open]{flex-basis:100%}
-.aft summary{color:var(--brown);font-weight:bold;text-decoration-color:#DCC9A6}
-.aft summary:hover{color:#5E3806}
-.aft-body{background:var(--bg-educator);border-left:3px solid var(--gold);padding:10px 14px;margin:9px 0 4px;
-  max-width:680px;font-size:13px;line-height:1.55;color:#4A4034}
-.aft-body strong{display:block;color:var(--brown);margin-bottom:4px;font-size:12.5px}
+.aft summary{color:var(--aft-ink);font-weight:bold;text-decoration-color:#A9C6E0}
+.aft summary:hover{color:#00325C;text-decoration-color:var(--aft)}
+.aft-body{background:var(--aft-bg);border-left:3px solid var(--aft);padding:10px 14px;margin:9px 0 4px;
+  max-width:680px;font-size:13px;line-height:1.55;color:#33485C}
+.aft-body strong{display:block;color:var(--aft-ink);margin-bottom:4px;font-size:12.5px}
 .aft-body p{margin:6px 0}
-.aft-body a.passage{display:inline-block;margin-top:4px;color:#6B470F;font-weight:bold;
-  text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;text-decoration-color:var(--gold)}
-.aft-body a.passage:hover{color:#4A3106;text-decoration-color:#4A3106}
-.aft-body a{color:#6B470F}
+.aft-body a.passage{display:inline-block;margin-top:4px;color:var(--aft-ink);font-weight:bold;
+  text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;text-decoration-color:var(--aft)}
+.aft-body a.passage:hover{color:#00325C;text-decoration-color:#00325C}
+.aft-body a{color:var(--aft-ink)}
 .asi-body{border-left:3px solid var(--line);margin:9px 0 4px;padding:3px 0 6px 14px;max-width:760px}
 .xw{font-size:12.5px;color:#4B6574;margin-bottom:5px}
 .xw b{font:bold 9.5px -apple-system,Helvetica,sans-serif;letter-spacing:.09em;text-transform:uppercase;
