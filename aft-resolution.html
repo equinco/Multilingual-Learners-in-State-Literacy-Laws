@@ -25,6 +25,12 @@ body{margin:0;background:#fff;color:var(--ink);font:15px/1.65 Georgia,'Times New
 h1{font-size:30px;line-height:1.18;color:var(--title);margin:9px 0 6px;font-weight:normal;text-wrap:balance}
 .sub{font-size:14px;color:var(--gray);font-style:italic;margin:0 0 18px}
 
+.srcrow{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}
+.srcrow a{display:inline-block;font:600 11.5px -apple-system,Helvetica,sans-serif;letter-spacing:.03em;
+  padding:6px 13px;border-radius:14px;text-decoration:none;border:1px solid var(--aft);color:var(--aft-ink);background:#fff}
+.srcrow a.solid{background:var(--aft-ink);border-color:var(--aft-ink);color:#fff}
+.srcrow a:hover{background:var(--aft-bg)}
+.srcrow a.solid:hover{background:#00325C}
 .howto{padding:13px 16px;background:var(--aft-bg);border-left:4px solid var(--aft);
   font-size:13px;line-height:1.6;color:#33485C;max-width:760px;margin-bottom:20px}
 .howto b{color:var(--aft-ink)}
@@ -68,6 +74,22 @@ footer.site a{color:rgba(255,255,255,.85)}
   .para .lab span{display:inline-block;margin:0 8px 4px 0}
   .sitebar nav{gap:12px}
 }
+
+@media print{
+  .sitebar,footer.site,.howto,.srcrow{display:none}
+  body{font-size:11pt;line-height:1.5}
+  .wrap{max-width:none;padding:0}
+  h1{font-size:22pt;margin-top:0}
+  .plist{break-after:page}
+  .plist a:hover{background:none}
+  .para{break-inside:avoid;grid-template-columns:150px minmax(0,1fr);gap:16px;margin-bottom:10px}
+  .para.tagged{background:#F1F6FA !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .para .lab{font-size:9pt}
+  .para .txt{font-size:10.5pt}
+  h2.sec{break-before:auto}
+  .notes,.attrib{font-size:9pt}
+  a{color:#00457C;text-decoration:none}
+}
 </style>
 </head>
 <body>
@@ -86,6 +108,11 @@ footer.site a{color:rgba(255,255,255,.85)}
   <div class="kicker">AFT reading resolution · annotated study copy</div>
   <h1>Nine principles in the AFT reading resolution</h1>
   <p class="sub">Annotated study copy of “Recommitting to Early Reading Instruction and Support” · Adopted July 19, 2026</p>
+
+  <div class="srcrow">
+    <a class="solid" href="https://www.aft.org/resolution/recommitting-early-reading-instruction-and-support" target="_blank" rel="noopener">Official AFT resolution ↗</a>
+    <a href="aft-reading-resolution-nine-principles.pdf" target="_blank" rel="noopener">Download this study copy (PDF)</a>
+  </div>
 
   <div class="howto">
     <b>How to use this copy.</b> The resolution follows in full. Margin labels identify passages connected to the nine principles below. A passage can speak to more than one principle; the labels are an interpretive guide, not AFT headings. Select a principle to jump to its first labelled passage, or follow a <a href="recommendations.html">recommendation</a> straight to the passage it rests on.
