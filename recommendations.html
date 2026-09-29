@@ -26,8 +26,9 @@ body{margin:0;background:#fff;color:var(--ink);font:15px/1.6 Georgia,'Times New 
 h1{font-size:30px;line-height:1.2;color:var(--title);margin:9px 0 10px;text-wrap:balance;font-weight:normal}
 .lead{font-size:15.5px;line-height:1.65;color:#3A3A3A;max-width:720px;margin:0 0 4px}
 
-.howto{margin:20px 0 4px;padding:13px 16px;background:var(--bg-content);border-left:4px solid var(--navy);
-  font-size:13px;line-height:1.6;color:#33444F;max-width:900px}
+.intro{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(280px,.85fr);gap:42px;align-items:start;margin-bottom:6px}
+.howto{padding:14px 17px;background:var(--bg-content);border-left:4px solid var(--navy);
+  font-size:13px;line-height:1.6;color:#33444F}
 .howto b{color:var(--title)}
 .howto .aft-note{display:block;margin-top:7px;color:#40566A}
 .howto a{color:var(--navy)}
@@ -112,6 +113,7 @@ footer.site{background:var(--navy);color:rgba(255,255,255,.62);font-size:11.5px;
 footer.site a{color:rgba(255,255,255,.85)}
 
 @media(max-width:860px){
+  .intro{grid-template-columns:1fr;gap:18px}
   .layout{display:block}
   .sidebar{position:static;display:flex;overflow-x:auto;gap:0;padding-bottom:10px;margin-bottom:8px}
   .sidebar h2{display:none}
@@ -133,13 +135,16 @@ footer.site a{color:rgba(255,255,255,.85)}
 </div>
 
 <div class="wrap">
-  <div class="kicker">Research &amp; policy</div>
-  <h1>Literacy policy recommendations</h1>
-  <p class="lead">Strong literacy policy sets clear principles, supports the people who put them into practice, and leaves room for informed instructional judgment. Each recommendation below is shown with the policy lever it depends on and, where one exists, the indicator in the legislation analysis that speaks to it.</p>
-
-  <div class="howto">
+  <div class="intro">
+   <div>
+    <div class="kicker">Research &amp; policy</div>
+    <h1>Literacy policy recommendations</h1>
+    <p class="lead">Strong literacy policy sets clear principles, supports the people who put them into practice, and leaves room for informed instructional judgment. Each recommendation below is shown with the policy lever it depends on and, where one exists, the indicator in the legislation analysis that speaks to it.</p>
+   </div>
+   <aside class="howto">
     <b>How to read this page.</b> Law establishes responsibilities and protections. Guidance adds specificity. Implementation provides capacity. Practice is what educators are prepared and supported to do.
     <span class="aft-note">✦&nbsp;AFT marks a connection to the <a href="https://www.aft.org/resolution/recommitting-early-reading-instruction-and-support" target="_blank" rel="noopener">AFT resolution on early reading instruction and support</a>; open the marker for the relevant passage. The nine principles derived from that resolution organise the <a href="state_practices.html">state practices matrix</a>.</span>
+   </aside>
   </div>
 
   <div class="layout">
