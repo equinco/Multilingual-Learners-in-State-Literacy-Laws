@@ -321,6 +321,17 @@ footer a:hover { color:white; }
 .asinav a{color:#1F4E79;text-decoration:none;font:13px Georgia,'Times New Roman',serif}
 .asinav a:hover{color:#0C447C;text-decoration:underline}
 @media(max-width:700px){.asibar{padding:10px 16px}.asibrand img{height:34px}.asinav{gap:12px}.asinav a{font-size:12px}}
+
+.asifoot{margin-top:46px;border-top:1px solid #D8DEE6;background:#FAF8F4;
+  padding:22px 26px;display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+.asifoot .fmark{display:block}
+.asifoot .fmark img{display:block;height:38px;width:auto;opacity:.92}
+.asifoot .fbody{flex:1 1 320px;min-width:260px}
+.asifoot .fname{font:bold 10px -apple-system,Helvetica,sans-serif;letter-spacing:.13em;
+  text-transform:uppercase;color:#854F0B;margin-bottom:5px}
+.asifoot p{margin:0;font:12.5px/1.6 Georgia,'Times New Roman',serif;color:#5A6670;max-width:720px}
+.asifoot a{color:#1F4E79}
+@media(max-width:620px){.asifoot{padding:18px}.asifoot .fmark img{height:30px}}
 </style>
 </head>
 <body>
@@ -411,10 +422,12 @@ footer a:hover { color:white; }
   </div>
 </section>
 
-<footer>
-  <p>Albert Shanker Institute · Analyses of enacted state literacy legislation, 2019–2025</p>
-  <p style="margin-top:4px">Source: ASI Legislation Database. The nine principles are derived from the <a href="https://www.aft.org/resolution/recommitting-early-reading-instruction-and-support" target="_blank" rel="noopener">AFT resolution on early reading instruction and support</a>.</p>
+<footer class="asifoot">
+  <a class="fmark" href="https://www.shankerinstitute.org/issues/literacy/rraa" target="_blank" rel="noopener"><img src="asi-logo.png" alt="Albert Shanker Institute"></a>
+  <div class="fbody">
+    <div class="fname">Reading Reform Across America</div>
+    <p>Analyses of literacy legislation enacted by the states, 2019–2025. Source: ASI Legislation Database, Albert Shanker Institute.</p>
+  </div>
 </footer>
-
 </body>
 </html>
