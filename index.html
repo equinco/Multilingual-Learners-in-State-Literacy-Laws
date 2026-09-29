@@ -330,6 +330,8 @@ footer a:hover { color:white; }
 .asibar nav.asinav a{color:#1F4E79;font:13px Georgia,'Times New Roman',serif;letter-spacing:0;font-weight:400}
 .asibar nav.asinav a.ext{color:#854F0B}
 .asibar nav.asinav a:hover{color:#0C447C;text-decoration:underline}
+
+.asinav a[aria-current="page"]{color:#0C447C;font-weight:bold;border-bottom:2px solid #C98A3C;padding-bottom:2px}
 </style>
 </head>
 <body>
@@ -338,7 +340,7 @@ footer a:hover { color:white; }
   <a class="asibrand" href="https://www.shankerinstitute.org/issues/literacy/rraa" target="_blank" rel="noopener">
     <img src="asi-logo.png" alt="Albert Shanker Institute"><span>Reading Reform<br>Across America</span></a>
   <nav class="asinav">
-    <a href="index.html">Home</a>
+    <a href="index.html" aria-current="page">Home</a>
     <a href="state_practices.html">What states are doing</a>
     <a href="bill_summaries_by_bucket.html">Multilingual learners</a>
     <a href="recommendations.html">Recommendations</a>

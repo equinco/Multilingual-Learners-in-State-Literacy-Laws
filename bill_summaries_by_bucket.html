@@ -234,6 +234,8 @@ a.btn-more.btn-alt:hover{background:#E6F1FB}
 .asinav a{color:#1F4E79;text-decoration:none;font:13px Georgia,'Times New Roman',serif}
 .asinav a:hover{color:#0C447C;text-decoration:underline}
 @media(max-width:700px){.asibar{padding:10px 16px}.asibrand img{height:34px}.asinav{gap:12px}.asinav a{font-size:12px}}
+
+.asinav a[aria-current="page"]{color:#0C447C;font-weight:bold;border-bottom:2px solid #C98A3C;padding-bottom:2px}
 </style>
 </head>
 <body>
@@ -244,7 +246,7 @@ a.btn-more.btn-alt:hover{background:#E6F1FB}
   <nav class="asinav">
     <a href="index.html">Home</a>
     <a href="state_practices.html">What states are doing</a>
-    <a href="bill_summaries_by_bucket.html">Multilingual learners</a>
+    <a href="bill_summaries_by_bucket.html" aria-current="page">Multilingual learners</a>
     <a href="recommendations.html">Recommendations</a>
     <a href="aft-resolution.html">AFT resolution</a>
     <a class="ext" href="https://www.shankerinstitute.org/issues/literacy/rraa" target="_blank" rel="noopener">Program home &#8599;</a>
