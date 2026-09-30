@@ -136,6 +136,7 @@ table.law td.yr{white-space:nowrap;width:1%;color:var(--gray);font-size:12px}
 .peer span{font-size:11.5px;color:var(--gray)}
 .elselead{margin:0 0 12px;font-size:13px;color:var(--gray);font-style:italic;max-width:780px}
 .elsewhere{display:flex;gap:12px;flex-wrap:wrap}
+.els{max-width:520px}
 .els{flex:1 1 300px;border:1px solid var(--line);border-radius:4px;padding:13px 16px;text-decoration:none;
  color:inherit;background:#FCFCFD;max-width:420px}
 .els:hover{border-color:var(--navy);background:var(--bg-req)}
@@ -190,7 +191,7 @@ table.law td.yr{white-space:nowrap;width:1%;color:var(--gray);font-size:12px}
   <h2 id="lawhead">Enacted laws</h2>
   <table class="law" id="laws"></table>
   <h2>This jurisdiction elsewhere</h2>
-  <p class="elselead">Independent organisations that track literacy policy from angles this analysis does not. Links open on their sites; the work and the wording there are theirs.</p>
+  <p class="elselead">The Reading League tracks how a state is putting its reading policy into practice, which this analysis does not measure. Links open on their sites; the work and the wording there are theirs.</p>
   <div class="elsewhere" id="elsewhere"></div>
   <p class="note">Enacted laws 2019–2025, excluding those that reach literacy only administratively. A principle shows green when a requirement is fully met and gold when a condition is; red-orange marks one only partly met or not met at all. Under each principle: a <b style="color:#3F6B4A">green dot</b> means addressed, an <b style="color:#B07D2B">amber ring</b> means mentioned but neither mandated nor funded, a grey dot means absent. ◆ marks a law that names the literacy research base. Navy is a requirement principle, gold a condition. Data current through 2025; coding revised September 2026. These measures describe what legislation contains, not its quality, funding or implementation. See the full <a href="state_practices.html">matrix</a>, the <a href="bill_summaries_by_bucket.html">multilingual-learner analysis</a> and the <a href="recommendations.html">recommendations</a>.</p>
 </div>
@@ -244,8 +245,6 @@ document.getElementById('near').innerHTML = near.length
 var slug=S.n.toLowerCase().replace(/ /g,'-'), tp=TP[q]||{}, els=[];
 if(tp.trl) els.push(['https://compass.thereadingleague.org/paths/policymakers-and-state-education-agencies/'+slug+'/',
   'The Reading League Compass','How the state is implementing its reading policy \u2014 screening, professional learning, curriculum review, regional supports. Updated twice a year.']);
-if(tp.eie) els.push(['https://earlyliteracymatters.org/state/'+slug+'/',
-  'ExcelinEd \u00b7 Early Literacy Matters','Whether the state has adopted each of eighteen early-literacy policies, scored and graded.']);
 document.getElementById('elsewhere').innerHTML=els.map(function(e){
   return '<a class="els" href="'+e[0]+'" target="_blank" rel="noopener"><b>'+esc(e[1])+' <span class="arw">\u2197</span></b><span>'+esc(e[2])+'</span></a>';}).join('');
 var ys=Object.keys(S.yrs||{}).filter(function(y){return S.yrs[y];});
