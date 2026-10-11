@@ -140,6 +140,8 @@ table.lg .lg-plain{font-weight:700;color:#0C447C;font-size:10px}
 
 .sort-label{font-size:11px;color:#666;margin:0 4px 0 10px}
 .sort-select{margin-right:4px}
+.dom-select{min-width:172px}
+.ctl select.subfilter:focus{outline:2px solid #185FA5;outline-offset:1px}
 
 /* ---- toolbar ---- */
 .toolbar{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:flex-end;margin:0 0 10px}
@@ -275,6 +277,22 @@ a.btn-more.btn-alt:hover{background:#E6F1FB}
     <option value="5p">5P — names the five pillars of reading</option>
     <option value="5pol">5P+OL — five pillars and oral language</option>
     <option value="none">None — names neither</option>
+  </select></div>
+  <div class="ctl"><span class="ctl-label">Domain referenced</span><select id="domainFilter" class="subfilter dom-select">
+    <option value="all">Any domain</option>
+    <optgroup label="Instructional core">
+      <option value="Instruction">Instruction</option>
+      <option value="Teacher PD">Teacher PD</option>
+      <option value="Teacher Prep">Teacher Prep</option>
+      <option value="Assessment">Assessment &amp; Screening</option>
+      <option value="Resources">Targeted Resources</option>
+    </optgroup>
+    <optgroup label="Ancillary">
+      <option value="Student Protections">Student Protections</option>
+      <option value="Funding">Funding</option>
+      <option value="Leadership">Leadership</option>
+      <option value="Accountability">Accountability</option>
+    </optgroup>
   </select></div>
   <div class="ctl"><span class="ctl-label">Sort</span><select id="sortSelect" class="subfilter sort-select">
     <option value="class">Classification, then A–Z</option>
@@ -1890,6 +1908,24 @@ function billMatchesGrounded(r) {
   return true; // all
 }
 
+var domainFilter = 'all';
+// each bill row caches the domains it actually dots, read once from the row's own dots
+function rowDomains(r) {
+  if (r.dataset.domList === undefined) {
+    var on = r.querySelectorAll('.dot.on');
+    var out = [];
+    for (var i = 0; i < on.length; i++) { if (on[i].dataset.t) out.push(on[i].dataset.t); }
+    r.dataset.domList = out.join('|');
+  }
+  return r.dataset.domList;
+}
+function domainOk(r) {
+  if (domainFilter === 'all') return true;
+  var d = rowDomains(r);
+  if (!d) return false;
+  return ('|' + d + '|').indexOf('|' + domainFilter + '|') !== -1;
+}
+
 function classOk(cls) {
   if (classFilter === 'all') return true;
   if (classFilter === 'limited') return cls === 'narrow_core' || cls === 'narrow_peri';
@@ -1906,6 +1942,7 @@ function applyFilters() {
     let visible = true;
     if (!classOk(cls)) visible = false;
     if (!billMatchesGrounded(r)) visible = false;
+    if (!domainOk(r)) visible = false;
     if (searchTerm && !search.includes(searchTerm)) visible = false;
     r.style.display = visible ? '' : 'none';
     if (visible) {
@@ -1922,7 +1959,8 @@ function applyFilters() {
     const g = document.querySelector('tr.state-grid-row[data-state="' + search + '"]');
     if (g) g.style.display = h.style.display;
   });
-  document.getElementById('countDisplay').textContent = (groundedSub !== 'all' ? shownBills + ' bills · ' : '') + visibleStates.size + ' jurisdictions shown';
+  var showBillCount = (groundedSub !== 'all') || (domainFilter !== 'all');
+  document.getElementById('countDisplay').textContent = (showBillCount ? shownBills + ' bills · ' : '') + visibleStates.size + ' jurisdictions shown';
 }
 
 document.querySelectorAll('.chip[data-class]').forEach(b => {
@@ -1935,6 +1973,10 @@ document.querySelectorAll('.chip[data-class]').forEach(b => {
 });
 document.getElementById('groundedSubfilter').addEventListener('change', (e) => {
   groundedSub = e.target.value;
+  applyFilters();
+});
+document.getElementById('domainFilter').addEventListener('change', (e) => {
+  domainFilter = e.target.value;
   applyFilters();
 });
 document.getElementById('searchInput').addEventListener('input', (e) => {
