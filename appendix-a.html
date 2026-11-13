@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="asi-icon.png"><link rel="apple-touch-icon" href="asi-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Appendix A: ML Coding Rules — ASI Legislation Analysis</title>
+<meta name="description" content="How multilingual-learner provisions in state literacy legislation were coded: corpus, inclusion tests, coding rules, domain boundaries, and grouping.">
+<style>
+:root{--navy:#0C447C;--title:#1F4E79;--brown:#854F0B;--gold:#C98A3C;--line:#D8DEE6;--ink:#222;--gray:#666;--bg-content:#EEF4FB}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.65 Georgia,'Times New Roman',serif}
+.wrap{max-width:1040px;margin:0 auto;padding:28px 18px 70px}
+.kicker{font:bold 10px -apple-system,Helvetica,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--brown)}
+h1{font-size:30px;line-height:1.2;color:var(--title);margin:9px 0 12px;text-wrap:balance;font-weight:normal;max-width:760px}
+.lead{font-size:15px;color:#3A3A3A;max-width:720px;margin:0}
+.updated{display:inline-block;margin-top:12px;font:12px -apple-system,Helvetica,sans-serif;color:#33485C;background:var(--bg-content);border-left:3px solid var(--navy);padding:6px 11px}
+.layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:40px;margin-top:28px}
+.toc{position:sticky;top:14px;height:max-content}
+.toc h2{font:bold 10px -apple-system,Helvetica,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);margin:0 0 7px}
+.toc a{display:block;text-decoration:none;color:var(--ink);font-size:13px;line-height:1.35;padding:7px 11px;border-left:2px solid var(--line)}
+.toc a:hover,.toc a:focus-visible{background:var(--bg-content);border-left-color:var(--navy);color:var(--title)}
+main{max-width:70ch}
+section{border-top:2px solid var(--line);padding:20px 0 6px;scroll-margin-top:16px}
+section:first-child{border-top:0;padding-top:0}
+h2{font:normal 22px Georgia,serif;color:var(--title);margin:0 0 10px;display:flex;gap:12px;align-items:baseline}
+h2 .n{color:var(--gold);font-size:22px}
+p{margin:0 0 14px}
+p.rule{padding-left:14px;border-left:2px solid #EDF0F3}
+p.rule strong{color:var(--title)}
+a{color:var(--navy)}
+a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media(max-width:820px){.layout{grid-template-columns:1fr;gap:18px}.toc{position:static}h1{font-size:25px}}
+.asibar{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  background:#fff;border-bottom:3px solid #0C447C;box-shadow:inset 0 -6px 0 -3px #C98A3C;
+  padding:12px 24px}
+.asibrand img{display:block;height:44px;width:auto}
+.asibrand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.asibrand span{font:bold 11px -apple-system,Helvetica,sans-serif;letter-spacing:.11em;text-transform:uppercase;
+  color:#854F0B;line-height:1.35;border-left:2px solid #C98A3C;padding-left:13px}
+.asinav a.ext{color:#854F0B}
+@media(max-width:700px){.asibrand span{font-size:9.5px;padding-left:9px}}
+
+.asinav{display:flex;gap:20px;flex-wrap:wrap}
+.asinav a{color:#1F4E79;text-decoration:none;font:13px Georgia,'Times New Roman',serif}
+.asinav a:hover{color:#0C447C;text-decoration:underline}
+@media(max-width:700px){.asibar{padding:10px 16px}.asibrand img{height:34px}.asinav{gap:12px}.asinav a{font-size:12px}}
+
+@media(max-width:620px){}
+
+.asinav a[aria-current="page"]{color:#0C447C;font-weight:bold;border-bottom:2px solid #C98A3C;padding-bottom:2px}
+
+</style>
+</head>
+<body>
+<header class="asibar">
+  <a class="asibrand" href="https://www.shankerinstitute.org/issues/literacy/rraa" target="_blank" rel="noopener">
+    <img src="asi-logo.png" alt="Albert Shanker Institute"><span>Reading Reform<br>Across America</span></a>
+  <nav class="asinav">
+    <a href="index.html">Home</a>
+    <a href="state_practices.html">What states are doing</a>
+    <a href="bill_summaries_by_bucket.html">Multilingual learners</a>
+    <a href="recommendations.html">Recommendations</a>
+    <a href="aft-resolution.html">AFT resolution</a>
+    <a href="appendix-a.html" aria-current="page">Appendix A</a>
+    <a class="ext" href="https://www.shankerinstitute.org/issues/literacy/rraa" target="_blank" rel="noopener">Program home &#8599;</a>
+  </nav>
+</header>
+<div class="wrap">
+  <div class="kicker">Methods appendix</div>
+  <h1>Appendix A. Coding Multilingual-Learner Provisions in State Literacy Legislation</h1>
+  <p class="lead">Companion to <em>The Urgency and Opportunity of Effective Beginning and Early Literacy Instruction for All: Multilingual Learners in State Literacy Law (2019–2025)</em>, Albert Shanker Institute. The coded clauses for every bill appear in <a href="bill_summaries_by_bucket.html">Table 3</a>.</p>
+  <span class="updated">Last updated November 13, 2026</span>
+  <div class="layout">
+    <nav class="toc" aria-label="Sections"><h2>Sections</h2><a href="#s1">1. Corpus and sample</a><a href="#s2">2. What counts as an ML provision</a><a href="#s3">3. Coding rules</a><a href="#s4">4. The nine areas and their boundaries</a><a href="#s5">5. Grouping jurisdictions</a><a href="#s6">6. Quality checks</a></nav>
+    <main>
+<section id="s1"><h2><span class="n">1</span>Corpus and sample</h2>
+<p>The analysis draws on the Albert Shanker Institute’s database of roughly 550 state laws addressing reading, literacy, dyslexia, curriculum, or the science of reading, enacted in the 2019–2025 sessions in the 50 states and the District of Columbia. Only enacted text is coded; language struck by amendment is never coded. The analysis covers PreK–12 schooling, so provisions on adult education, and non-education items carried in omnibus or budget bills, are excluded.</p>
+<p>Bills entered the multilingual-learner (ML) analysis if the original coders had identified them as referencing MLs. Each of these bills was then read in full and coded provision by provision. Where the original screen had missed an ML reference in the literacy portion of a bill, the bill was added. Budget and school-finance bills that the original screen had not flagged were not added, since their ML references concern general English learner funding rather than literacy policy. Forty-one jurisdictions have at least one coded ML provision.</p>
+</section>
+<section id="s2"><h2><span class="n">2</span>What counts as an ML provision</h2>
+<p>A provision is coded only if the clause itself names multilingual learners: English learners, English language learners, multilingual learners, emergent bilingual or limited English proficient students, students in bilingual, dual-language, or ESL programs, or students’ home language. Broader terms such as “all students,” “struggling readers,” or “at-risk students” do not count unless the statute places MLs within them. An ML term elsewhere in the same section, list, or appropriation does not carry over to a clause that does not name MLs.</p>
+<p>The test differs by area. In the five instructional-core areas, the clause must be a literacy provision that references MLs; English language development (ELD) and English as a second language count as literacy. In the four ancillary areas, which govern the systems around instruction, a provision qualifies when it sits in a literacy bill and names MLs, even if it does not itself address reading. Funding for English learners in a literacy bill is therefore coded as funding, whether or not the funds are tied to reading.</p>
+<p>Because ELD counts as literacy for coding purposes, a clause that names ELD is coded in the core area it acts on, even when it does not make ELD part of literacy instruction for MLs. California AB 2268 (2024), which concerns English language development assessments, is coded as assessment. A clause that names ELD only in passing receives no code: New Mexico HB 481 (2023) mentions ELD only in the title of an adopted materials list. The report’s narrower count of states that specify ELD as part of literacy instruction for MLs (Section 3, Part II), and the “ELD (instructional)” and “ELD (non-instructional)” tags in <a href="bill_summaries_by_bucket.html">Table 3</a>, draw that distinction separately from the area codes.</p>
+<p>Several kinds of language earn no code. Legislative findings and statements of intent create no obligation. Definitions and enrollment counts are coded only when the statute attaches a consequence to them, as when an English learner count drives a funding formula. Staffing ratios, recruitment and pay provisions, and licensure or endorsement pathways that do not address reading are not coded, nor is professional development in English language acquisition that is not reading professional development; Massachusetts HB 5050 (2022), for example, funds English language acquisition professional development and is coded only as funding.</p>
+<p>Some ML provisions fall outside the nine areas: the Seal of Biliteracy, library provisions, and family and community literacy programs. These are recorded with their statutory text and described in the report and in <a href="bill_summaries_by_bucket.html">Table 3</a>, but they earn no code and do not count toward a jurisdiction’s breadth.</p>
+<p>Bilingual and dual-language provisions are coded the same way, by what the clause does. A grant for dual-language classrooms is funding, an advisory board for a dual-language program is leadership and representation, and training attached to the program is professional development. Such a provision reaches the instructional core only when it addresses how reading is taught, assessed, or staffed: Connecticut HB 6517 (2021), which requires reading assessments in a student’s native language when the student is instructed in literacy in that language, is coded as assessment. Box 3 discusses these provisions further.</p>
+</section>
+<section id="s3"><h2><span class="n">3</span>Coding rules</h2>
+<p class="rule"><strong>Code the clause, not the passage.</strong> Each code rests on a specific clause of enacted text, quoted in <a href="bill_summaries_by_bucket.html">Table 3</a>. An ML term and a literacy practice named in the same list are not thereby linked.</p>
+<p class="rule"><strong>Code by what the clause acts on.</strong> The area is determined by what the clause obligates or governs—a student’s instruction, a practicing teacher, a preparation candidate, the screening system, a delivered resource—not by the terms it uses.</p>
+<p class="rule"><strong>One clause, usually one area.</strong> A second area is added only when a clause carries two distinct obligations, such as an appropriation that also specifies the staff it must fund.</p>
+<p class="rule"><strong>Each bill is coded separately.</strong> When a later bill re-enacts or amends a coded clause, the clause is coded on that bill as well. Because a jurisdiction’s profile counts distinct areas, repetition across bills adds nothing to its breadth: a state with ten retention-exemption bills has one area.</p>
+<p class="rule"><strong>Repealed provisions remain.</strong> A provision removed in a later session stays in the jurisdiction’s profile for the years it was law.</p>
+</section>
+<section id="s4"><h2><span class="n">4</span>The nine areas and their boundaries</h2>
+<p>Five areas form the instructional core: instruction and program design, teacher professional development, teacher preparation, assessment and screening, and targeted resources and staffing. Four are ancillary: student protections and flexibility, funding, leadership and representation, and accountability and monitoring. The distinction reflects proximity to instruction, not importance. Section 3 and the figures refer to these as domains. Table 1 gives definitions and examples. Five boundaries required particular care.</p>
+<p class="rule"><strong>Instruction or educator training.</strong> A clause is coded by whom it obligates. What students are taught is instruction; what practicing teachers must learn is professional development; the same content required of candidates is teacher preparation. Florida CS/HB 1159 (2021) requires preparation programs to include “strategies appropriate for the instruction of English language learners,” so it is coded as teacher preparation.</p>
+<p class="rule"><strong>Assessment or student protections.</strong> Binding requirements on the screening or assessment instrument itself—which tool, in what language, how it is normed, how results are interpreted, and what modifications or adaptations apply—are assessment. Rules about whether MLs take part are protections: exemptions, inclusion mandates, and accommodations, as well as guidance on when screening is “appropriate” for English learners. New York A.2687 (2025) requires the state dyslexia guidebook to cover “screening modifications and adaptations” for English learners, which changes the instrument, so it is coded as assessment. Oklahoma SB 841 (2025) requires approved screeners to be usable with English learners and also exempts some English learners from screening, so it receives both codes. Pennsylvania SB 801 (2024) subjects students with limited English proficiency to universal reading screening unless screening would conflict with their educational program or service plan; it is an inclusion mandate and is coded as a protection.</p>
+<p class="rule"><strong>Resources or funding.</strong> An appropriation earns a resources code only when something specific will be delivered, such as staff or materials. Delaware HB 250 (2021) funds services tied to English learner enrollment and also funds a reading interventionist in each qualifying school, so it is coded for both. Coaches, reading specialists, and interventionists are resources; leadership and representation is reserved for governance and voice—who holds a coordinating role, sits on a council, or must be consulted.</p>
+<p class="rule"><strong>Accountability or the activity monitored.</strong> A requirement to study, report on, or monitor an activity is accountability, even when the activity is instruction or training. Connecticut HB 6762 (2023) requires a study of the relationship between science-of-reading training and the misidentification of multilingual learners; because it studies training rather than providing it, it is coded as accountability.</p>
+<p class="rule"><strong>Families.</strong> A requirement that parents be notified about their child’s classification, assessment results, or rights—including notices that describe strategies for supporting reading at home—is a student protection. Family literacy programs that go beyond notification, such as home visits or family institutes, fall outside the nine areas and are described rather than coded. Section 3 discusses notification and family literacy provisions together.</p>
+</section>
+<section id="s5"><h2><span class="n">5</span>Grouping jurisdictions</h2>
+<p>A jurisdiction’s profile is the set of distinct areas its bills reach at least once. Jurisdictions reaching five or more areas, including at least one instructional-core area, are grouped as having broader ML integration (eight states). Because there are only four ancillary areas, reaching five necessarily includes the instructional core. Below five, jurisdictions are divided by whether any provision reaches the core: “some-core” (18 jurisdictions) or “ancillary-only” (15). A retention exemption acknowledges MLs without specifying instruction; a requirement for screeners validated on multilingual samples, however narrow, reaches the core. Ten jurisdictions have no coded ML provisions in the literacy laws examined. Figure 1 and Table 2 show the grouping.</p>
+<p>The five-area threshold is descriptive, not theoretically derived, and it measures breadth, not strength. The limited group tops out at four areas (Alaska, Florida, Georgia, and Oklahoma), and two states reach exactly five (Illinois and Ohio), so a threshold one area higher or lower would change the grouping of a few states. <a href="bill_summaries_by_bucket.html">Table 3</a> allows readers to apply other thresholds.</p>
+<p>The analysis describes how literacy law treats multilingual learners, not the entirety of a state’s ML policy. Bilingual-education and English-language-development statutes outside the literacy corpus, as well as regulations and guidance, are not included.</p>
+</section>
+<section id="s6"><h2><span class="n">6</span>Quality checks</h2>
+<p>Every coded clause was checked against the enacted bill text to confirm that the quoted language appears in the law, names MLs, and supports the assigned area.</p>
+</section>
+    </main>
+  </div>
+</div>
+</body>
+</html>
